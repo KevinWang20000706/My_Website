@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>臺北大縱走第3+4段｜登山行程與裝備攻略</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          },
+          colors: {
+            forest: {
+              50: '#f2f7f4',
+              100: '#e1ede6',
+              500: '#2d6a4f',
+              600: '#1b4332',
+              700: '#081c15',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f4f6f4;
+      background-image: radial-gradient(#d8e2dc 1px, transparent 1px);
+      background-size: 20px 20px;
+    }
+    .checkbox-item input:checked + div {
+      text-decoration: line-through;
+      color: #9ca3af;
+    }
+    .checkbox-item input:checked ~ .badge {
+      opacity: 0.5;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased selection:bg-emerald-600 selection:text-white pb-16">
+
+  <!-- 頂部 Hero 橫幅 -->
+  <header class="relative bg-gradient-to-br from-emerald-900 via-teal-800 to-slate-900 text-white overflow-hidden shadow-xl">
+    <!-- 背景裝飾圖騰 -->
+    <div class="absolute inset-0 opacity-15">
+      <svg class="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0,192L60,176C120,160,240,128,360,138.7C480,149,600,203,720,197.3C840,192,960,128,1080,117.3C1200,107,1320,149,1380,170.7L1440,192L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+      </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-10 pb-12 relative z-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div>
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-200 text-sm font-medium mb-3">
+            <i class="fa-solid fa-mountain-sun"></i> 健行企劃書・Taipei Grand Trail
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight mb-2">
+            臺北大縱走 <span class="text-emerald-400">第 3 + 4 段</span>
+          </h1>
+          <p class="text-emerald-100/80 text-base sm:text-lg flex items-center gap-2">
+            <i class="fa-solid fa-route"></i> 小油坑遊客服務站 ➔ 七星山 ➔ 風櫃口 ➔ 大湖公園捷運站
+          </p>
+        </div>
+
+        <div class="flex flex-wrap gap-2 no-print">
+          <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 backdrop-blur border border-white/20 text-sm font-medium transition">
+            <i class="fa-solid fa-print"></i> 列印 / 存成 PDF
+          </button>
+        </div>
+      </div>
+
+      <!-- 核心數據指標 -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mt-8">
+        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4">
+          <div class="text-emerald-300 text-xs font-medium uppercase tracking-wider mb-1">活動日期</div>
+          <div class="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <i class="fa-regular fa-calendar-check text-emerald-400"></i> 2026/11/08 (日)
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4">
+          <div class="text-emerald-300 text-xs font-medium uppercase tracking-wider mb-1">總路程 / 總爬升</div>
+          <div class="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <i class="fa-solid fa-person-hiking text-emerald-400"></i> 21 km / ▲ 900 m
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4">
+          <div class="text-emerald-300 text-xs font-medium uppercase tracking-wider mb-1">預估行進配速</div>
+          <div class="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <i class="fa-solid fa-gauge-high text-emerald-400"></i> 2.6~3 km/h <span class="text-xs font-normal text-emerald-200">(7~8hr)</span>
+          </div>
+        </div>
+        <div class="bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4">
+          <div class="text-emerald-300 text-xs font-medium uppercase tracking-wider mb-1">建議攜帶水量</div>
+          <div class="text-lg sm:text-xl font-bold flex items-center gap-2">
+            <i class="fa-solid fa-bottle-water text-emerald-400"></i> 2000 ~ 3500 cc
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- 主內容區 -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 -mt-6 relative z-20 space-y-6">
+
+    <!-- GPX 與 攻略快速連結區 -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-4 sm:p-6">
+      <div class="flex items-center justify-between mb-4">
+        <h2 class="text-base sm:text-lg font-bold text-slate-800 flex items-center gap-2">
+          <i class="fa-solid fa-compass text-emerald-600"></i> 離線地圖 GPX ＆ 路線攻略傳送門
+        </h2>
+        <span class="text-xs text-slate-500 hidden sm:inline">建議出發前先下載 GPX 至「綠野仙蹤」或「健行筆記」App</span>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        <!-- 第三段 GPX -->
+        <a href="https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=5879332" target="_blank" rel="noopener"
+           class="group flex items-center p-3.5 rounded-xl bg-emerald-50/70 hover:bg-emerald-600 border border-emerald-200 hover:border-emerald-600 transition duration-200">
+          <div class="w-10 h-10 rounded-lg bg-emerald-600 group-hover:bg-white text-white group-hover:text-emerald-600 flex items-center justify-center text-lg font-bold shrink-0 transition">
+            🗺️
+          </div>
+          <div class="ml-3 overflow-hidden">
+            <div class="text-xs font-medium text-emerald-700 group-hover:text-emerald-100">健行筆記 GPX</div>
+            <div class="text-sm font-bold text-slate-800 group-hover:text-white truncate">臺北大縱走第三段 GPX</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-emerald-600 group-hover:text-white"></i>
+        </a>
+
+        <!-- 第四段 GPX -->
+        <a href="https://hiking.biji.co/index.php?q=trail&act=gpx_detail&id=5777407" target="_blank" rel="noopener"
+           class="group flex items-center p-3.5 rounded-xl bg-teal-50/70 hover:bg-teal-600 border border-teal-200 hover:border-teal-600 transition duration-200">
+          <div class="w-10 h-10 rounded-lg bg-teal-600 group-hover:bg-white text-white group-hover:text-teal-600 flex items-center justify-center text-lg font-bold shrink-0 transition">
+            🗺️
+          </div>
+          <div class="ml-3 overflow-hidden">
+            <div class="text-xs font-medium text-teal-700 group-hover:text-teal-100">健行筆記 GPX</div>
+            <div class="text-sm font-bold text-slate-800 group-hover:text-white truncate">臺北大縱走第四段 GPX</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-teal-600 group-hover:text-white"></i>
+        </a>
+
+        <!-- 第三段 攻略 -->
+        <a href="https://andyventure.com/taiwan-taipei-grand-trail-section-3/" target="_blank" rel="noopener"
+           class="group flex items-center p-3.5 rounded-xl bg-amber-50/70 hover:bg-amber-600 border border-amber-200 hover:border-amber-600 transition duration-200">
+          <div class="w-10 h-10 rounded-lg bg-amber-500 group-hover:bg-white text-white group-hover:text-amber-600 flex items-center justify-center text-lg font-bold shrink-0 transition">
+            📒
+          </div>
+          <div class="ml-3 overflow-hidden">
+            <div class="text-xs font-medium text-amber-700 group-hover:text-amber-100">詳細圖文攻略</div>
+            <div class="text-sm font-bold text-slate-800 group-hover:text-white truncate">臺北大縱走第三段 攻略</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-amber-600 group-hover:text-white"></i>
+        </a>
+
+        <!-- 第四段 攻略 -->
+        <a href="https://andyventure.com/taiwan-taipei-grand-trail-section-4/" target="_blank" rel="noopener"
+           class="group flex items-center p-3.5 rounded-xl bg-orange-50/70 hover:bg-orange-600 border border-orange-200 hover:border-orange-600 transition duration-200">
+          <div class="w-10 h-10 rounded-lg bg-orange-500 group-hover:bg-white text-white group-hover:text-orange-600 flex items-center justify-center text-lg font-bold shrink-0 transition">
+            📒
+          </div>
+          <div class="ml-3 overflow-hidden">
+            <div class="text-xs font-medium text-orange-700 group-hover:text-orange-100">詳細圖文攻略</div>
+            <div class="text-sm font-bold text-slate-800 group-hover:text-white truncate">臺北大縱走第四段 攻略</div>
+          </div>
+          <i class="fa-solid fa-arrow-up-right-from-square ml-auto text-xs text-orange-600 group-hover:text-white"></i>
+        </a>
+      </div>
+    </section>
+
+    <!-- 雙欄主體：左欄行程時間軸 / 右欄裝備清單與注意事項 -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+      <!-- 左欄：行程時間軸 + 路線資訊 (佔 5 欄) -->
+      <div class="lg:col-span-5 space-y-6">
+        
+        <!-- 行程時間表 -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sm:p-6">
+          <div class="flex items-center justify-between mb-6">
+            <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+              <i class="fa-solid fa-clock text-emerald-600"></i> 當日行程時間軸
+            </h2>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded-full bg-slate-100 text-slate-600">
+              2026/11/08 (日)
+            </span>
+          </div>
+
+          <div class="relative pl-6 border-l-2 border-emerald-200 space-y-6">
+            
+            <!-- 06:30 - 08:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
+              <div class="text-xs font-bold text-slate-400">06:30 - 08:00</div>
+              <div class="text-sm text-slate-500 mt-0.5">晨間準備 / 出發前整備 (---)</div>
+            </div>
+
+            <!-- 08:00 - 08:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">08:00 - 08:30</span>
+                <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 30 min</span>
+              </div>
+              <div class="font-bold text-slate-800 mt-1">楊家豪宅 ➔ 劍潭捷運站</div>
+            </div>
+
+            <!-- 08:30 - 09:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">08:30 - 09:30</span>
+                <span class="text-xs text-slate-400"><i class="fa-solid fa-bus"></i> 45-60 min</span>
+              </div>
+              <div class="font-bold text-slate-800 mt-1">劍潭捷運站 ➔ 小油坑遊客服務站</div>
+            </div>
+
+            <!-- 09:30 - 14:00 第三段 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-emerald-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-emerald-50 to-teal-50/50 border border-emerald-200/80 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-emerald-600 text-white">09:30 - 14:00</span>
+                  <span class="text-xs font-bold text-emerald-700">約 4.5 小時</span>
+                </div>
+                <h3 class="text-base font-black text-emerald-950 mb-3 flex items-center gap-1.5">
+                  <i class="fa-solid fa-mountain text-emerald-600"></i> 臺北大縱走第三段
+                </h3>
+                <ol class="space-y-2 text-sm text-slate-700">
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                    <span class="font-medium">小油坑遊客服務站</span> <span class="text-xs text-emerald-600 font-semibold ml-auto">起登</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                    <span class="font-bold text-emerald-900">七星山主峰</span> <span class="text-xs bg-amber-100 text-amber-800 px-1.5 py-0.5 rounded ml-auto">北市第一高峰</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                    <span>七星山東峰</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                    <span>冷水坑遊客服務站</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-200 text-emerald-900 text-xs font-bold flex items-center justify-center shrink-0">5</span>
+                    <span>擎天崗遊客服務站</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-emerald-600 text-white text-xs font-bold flex items-center justify-center shrink-0">6</span>
+                    <span class="font-medium">風櫃口</span> <span class="text-xs text-emerald-600 font-semibold ml-auto">銜接點</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- 14:00 - 17:30 第四段 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-teal-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-teal-50 to-cyan-50/50 border border-teal-200/80 rounded-xl p-4">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-teal-600 text-white">14:00 - 17:30</span>
+                  <span class="text-xs font-bold text-teal-700">約 3.5 小時</span>
+                </div>
+                <h3 class="text-base font-black text-teal-950 mb-3 flex items-center gap-1.5">
+                  <i class="fa-solid fa-tree text-teal-600"></i> 臺北大縱走第四段
+                </h3>
+                <ol class="space-y-2 text-sm text-slate-700">
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-600 text-white text-xs font-bold flex items-center justify-center shrink-0">1</span>
+                    <span class="font-medium">風櫃口</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-200 text-teal-900 text-xs font-bold flex items-center justify-center shrink-0">2</span>
+                    <span>雙溪溝古道</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-200 text-teal-900 text-xs font-bold flex items-center justify-center shrink-0">3</span>
+                    <span>梅花山</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-200 text-teal-900 text-xs font-bold flex items-center justify-center shrink-0">4</span>
+                    <span>土地公像</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-200 text-teal-900 text-xs font-bold flex items-center justify-center shrink-0">5</span>
+                    <span>白石森活有機農場</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-200 text-teal-900 text-xs font-bold flex items-center justify-center shrink-0">6</span>
+                    <span>圓覺寺 / 圓覺瀑布</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-200 text-teal-900 text-xs font-bold flex items-center justify-center shrink-0">7</span>
+                    <span>大溝溪親水步道</span>
+                  </li>
+                  <li class="flex items-center gap-2.5">
+                    <span class="w-5 h-5 rounded-full bg-teal-600 text-white text-xs font-bold flex items-center justify-center shrink-0">8</span>
+                    <span class="font-medium">大湖公園捷運站</span> <span class="text-xs text-teal-600 font-semibold ml-auto">終點賦歸</span>
+                  </li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- 17:30 - 18:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-amber-500 border-4 border-white shadow"></div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-amber-50 text-amber-700">17:30 - 18:30</span>
+              </div>
+              <div class="font-bold text-slate-800 mt-1">自由行程 <span class="text-xs font-normal text-slate-500">（依據下撤地點彈性調整）</span></div>
+            </div>
+
+            <!-- 18:30 - 21:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
+              <div class="text-xs font-bold text-slate-400">18:30 - 21:00</div>
+              <div class="text-sm text-slate-500 mt-0.5">緩衝預備時間 / 平安返家 (---)</div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- 路線資訊與行程費用 -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sm:p-6 space-y-5">
+          <div>
+            <h3 class="text-base font-bold text-slate-800 flex items-center gap-2 mb-3">
+              <i class="fa-solid fa-circle-info text-emerald-600"></i> 關鍵路線資訊
+            </h3>
+            <ul class="space-y-2.5 text-sm text-slate-700 bg-slate-50 p-4 rounded-xl border border-slate-100">
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-droplet-slash text-sky-600 mt-1 w-4 text-center"></i>
+                <div><strong class="text-slate-900">補水資訊：</strong>全程無補水點，但沿路有攤販，請注意水的攜帶量</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-glass-water text-sky-600 mt-1 w-4 text-center"></i>
+                <div><strong class="text-slate-900">飲水分配：</strong>上坡 <code class="px-1.5 py-0.5 bg-sky-100 text-sky-800 rounded font-bold">500cc/hr</code>、下坡 <code class="px-1.5 py-0.5 bg-sky-100 text-sky-800 rounded font-bold">150cc/hr</code></div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-person-walking text-emerald-600 mt-1 w-4 text-center"></i>
+                <div><strong class="text-slate-900">行進配速：</strong>2.6km ~ 3km/hr（預估總時數 7~8hr）</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-person-running text-amber-600 mt-1 w-4 text-center"></i>
+                <div><strong class="text-slate-900">撤離點：</strong>沿路皆可下切撤離</div>
+              </li>
+              <li class="flex items-start gap-2">
+                <i class="fa-solid fa-signs-post text-slate-500 mt-1 w-4 text-center"></i>
+                <div><strong class="text-slate-900">路線備案：</strong>無</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="pt-3 border-t border-slate-100">
+            <h3 class="text-base font-bold text-slate-800 flex items-center gap-2 mb-3">
+              <i class="fa-solid fa-coins text-amber-500"></i> 行程費用備註
+            </h3>
+            <div class="grid grid-cols-2 gap-3 text-sm">
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex justify-between items-center">
+                <span class="text-slate-500">油資</span>
+                <span class="font-bold text-slate-700">--</span>
+              </div>
+              <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex justify-between items-center">
+                <span class="text-slate-500">國道過路費</span>
+                <span class="font-bold text-slate-700">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 右欄：互動式準備用品清單 + 著裝建議 + 安全注意事項 (佔 7 欄) -->
+      <div class="lg:col-span-7 space-y-6">
+
+        <!-- 準備用品 Checklist -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5 sm:p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
+                <i class="fa-solid fa-list-check text-emerald-600"></i> 準備用品檢查表
+              </h2>
+              <p class="text-xs text-slate-500 mt-0.5">點擊項目即可打勾，系統會自動幫您記住進度</p>
+            </div>
+            <div class="flex items-center gap-3 no-print">
+              <span id="progress-text" class="text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full">0 / 18 已準備</span>
+              <button onclick="resetChecklist()" class="text-xs text-slate-400 hover:text-rose-600 transition">
+                <i class="fa-solid fa-rotate-left"></i> 重置
+              </button>
+            </div>
+          </div>
+
+          <!-- 進度條 -->
+          <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden mb-6 no-print">
+            <div id="progress-bar" class="h-full bg-emerald-500 transition-all duration-300" style="width: 0%"></div>
+          </div>
+
+          <!-- 必備用品 -->
+          <div class="mb-6">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-rose-500"></span>
+              <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider">核心必備裝備 (8項)</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="essential-list">
+              <!-- JS 動態生成或靜態渲染 -->
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-1" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">錢包</div>
+                  <div class="text-xs text-slate-500 mt-0.5">2,000~3,000 現金</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-2" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">手機</div>
+                  <div class="text-xs text-slate-500 mt-0.5">可先下載離線地圖、攻略、綠野仙蹤 app</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-3" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">飲用水 / 運動飲料</div>
+                  <div class="text-xs text-slate-500 mt-0.5">約 2000~3500cc，運動飲料也可 (電解質補充)</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-4" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">當日午餐</div>
+                  <div class="text-xs text-slate-500 mt-0.5">耐放為主，如 7-11 飯糰或三明治</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-5" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">雨傘 / 雨衣</div>
+                  <div class="text-xs text-slate-500 mt-0.5">以防下雨 / 防曬</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-6" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">手電筒 / 頭燈</div>
+                  <div class="text-xs text-slate-500 mt-0.5">以防摸黑下山</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-7" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">行動電源</div>
+                  <div class="text-xs text-slate-500 mt-0.5">手電筒 / 頭燈 / 手機備援</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/80 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-8" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">個人藥品 & 衛生紙/濕紙巾</div>
+                  <div class="text-xs text-slate-500 mt-0.5">高山症藥物、暈車藥、清潔擦拭</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-bold px-2 py-0.5 rounded bg-rose-50 text-rose-600 shrink-0">必備</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- 可選用品 -->
+          <div>
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+              <h3 class="text-sm font-bold text-slate-700 uppercase tracking-wider">建議與選配裝備 (10項)</h3>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-9" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">登山杖</div>
+                  <div class="text-xs text-slate-500 mt-0.5">山上也可以撿</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-10" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">手套</div>
+                  <div class="text-xs text-slate-500 mt-0.5">攀繩保護</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-11" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">帽子</div>
+                  <div class="text-xs text-slate-500 mt-0.5">遮陽防曬</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-12" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">毛巾</div>
+                  <div class="text-xs text-slate-500 mt-0.5">拍照擦汗</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-13" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">換洗衣物</div>
+                  <div class="text-xs text-slate-500 mt-0.5">下山換洗 or 防曬防寒衣物</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-14" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">零食水果</div>
+                  <div class="text-xs text-slate-500 mt-0.5">過程充飢 & 午餐加菜，大家可 Share</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-15" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">防蚊 / 防曬液</div>
+                  <div class="text-xs text-slate-500 mt-0.5">戶外防護</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-16" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">簡易醫療包</div>
+                  <div class="text-xs text-slate-500 mt-0.5">外傷應急處理</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-17" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">瑞士刀</div>
+                  <div class="text-xs text-slate-500 mt-0.5">多功能工具</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+
+              <label class="checkbox-item flex items-start gap-3 p-3 rounded-xl border border-slate-200/60 hover:bg-slate-50 cursor-pointer transition select-none">
+                <input type="checkbox" data-id="item-18" class="mt-1 w-4 h-4 accent-emerald-600 rounded shrink-0">
+                <div class="text-sm">
+                  <div class="font-bold text-slate-800">傘繩 / 童軍繩</div>
+                  <div class="text-xs text-slate-500 mt-0.5">備用繩索</div>
+                </div>
+                <span class="badge ml-auto text-[11px] font-medium px-2 py-0.5 rounded bg-slate-100 text-slate-600 shrink-0">可選</span>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- 著裝與背包建議 + 緊急注意事項 -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          
+          <!-- 其他：著裝與背包 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 p-5">
+            <h3 class="text-base font-bold text-slate-800 flex items-center gap-2 mb-4">
+              <i class="fa-solid fa-shirt text-emerald-600"></i> 著裝與背包建議
+            </h3>
+            <div class="space-y-3 text-sm">
+              <div class="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                <div class="font-bold text-emerald-950 mb-1 flex items-center gap-1.5">
+                  <i class="fa-solid fa-shoe-prints text-emerald-600"></i> 建議著裝
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  上下身輕便透氣為主，鞋子以<strong>止滑、防水佳</strong>為優先考量。
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-emerald-50/60 border border-emerald-100">
+                <div class="font-bold text-emerald-950 mb-1 flex items-center gap-1.5">
+                  <i class="fa-solid fa-bag-shopping text-emerald-600"></i> 背包選擇
+                </div>
+                <p class="text-slate-600 leading-relaxed">
+                  建議攜帶具備<strong>減壓設計佳</strong>的雙肩背包，減輕長途縱走負擔。
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- 安全與緊急注意事項 -->
+          <div class="bg-white rounded-2xl shadow-sm border border-rose-200/80 p-5">
+            <h3 class="text-base font-bold text-rose-700 flex items-center gap-2 mb-4">
+              <i class="fa-solid fa-triangle-exclamation text-rose-600"></i> 緊急應變與注意事項
+            </h3>
+            <div class="space-y-3 text-sm">
+              <div class="p-3.5 rounded-xl bg-amber-50/70 border border-amber-200/80">
+                <div class="font-bold text-amber-900 mb-1 flex items-center gap-1.5">
+                  <i class="fa-solid fa-temperature-high text-amber-600"></i> 脫水 / 中暑處置
+                </div>
+                <p class="text-slate-700 leading-relaxed">
+                  移至陰涼處休息、額頭打濕降溫、<strong>小口慢飲水</strong>、並即時補充電解質。
+                </p>
+              </div>
+              <div class="p-3.5 rounded-xl bg-rose-50/70 border border-rose-200/80">
+                <div class="font-bold text-rose-900 mb-1 flex items-center gap-1.5">
+                  <i class="fa-solid fa-heart-pulse text-rose-600"></i> 高山症處置
+                </div>
+                <p class="text-slate-700 leading-relaxed">
+                  服用高山症藥物，陰涼處休息、額頭打濕、小口慢飲水、補充電解質；<strong>如久久無法適應，請立即下撤至較低海拔</strong>。
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- 頁尾 -->
+  <footer class="max-w-6xl mx-auto px-4 sm:px-6 mt-10 text-center text-xs text-slate-400">
+    <p>⛰️ 臺北大縱走第 3+4 段健行計畫 ｜ 祝旅途平安順利、享受山林之美！</p>
+  </footer>
+
+  <!-- 互動式 Checklist 腳本 -->
+  <script>
+    const STORAGE_KEY = 'tpe_grand_trail_3_4_checklist';
+    const checkboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+
+    function updateProgress() {
+      const total = checkboxes.length;
+      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
+      const percent = Math.round((checked / total) * 100);
+      
+      progressBar.style.width = `${percent}%`;
+      progressText.textContent = `${checked} / ${total} 已準備 (${percent}%)`;
+
+      // 儲存狀態到 LocalStorage
+      const state = {};
+      checkboxes.forEach(cb => {
+        state[cb.dataset.id] = cb.checked;
+      });
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+    }
+
+    function loadProgress() {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+        checkboxes.forEach(cb => {
+          if (saved[cb.dataset.id]) {
+            cb.checked = true;
+          }
+          cb.addEventListener('change', updateProgress);
+        });
+        updateProgress();
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    function resetChecklist() {
+      if (confirm('確定要清空所有打勾紀錄嗎？')) {
+        checkboxes.forEach(cb => cb.checked = false);
+        updateProgress();
+      }
+    }
+
+    loadProgress();
+  </script>
+</body>
+</html>

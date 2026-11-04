@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>沖繩五日遊行程表 (11/14 - 11/18)</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap');
+  
+  * {
+    box-sizing: border-box;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    font-family: 'Noto Sans TC', "Microsoft JhengHei", sans-serif;
+    background-color: #faf6f2;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+  }
+
+  .page {
+    width: 210mm;
+    min-height: 285mm;
+    margin: 0 auto 20px auto;
+    background: #ffffff;
+    padding: 12mm 15mm;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.06);
+    border-radius: 8px;
+    position: relative;
+    page-break-after: always;
+  }
+
+  .page:last-child {
+    page-break-after: auto;
+  }
+
+  @media print {
+    body {
+      background: #fff;
+      padding: 0;
+    }
+    .page {
+      width: 100%;
+      min-height: auto;
+      margin: 0;
+      padding: 8mm 10mm;
+      box-shadow: none;
+      page-break-after: always;
+    }
+    .no-print {
+      display: none !important;
+    }
+  }
+
+  .day-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  /* 活潑飽滿的珊瑚粉紅膠囊 */
+  .day-badge {
+    background-color: #ff5c8a;
+    color: white;
+    font-weight: 700;
+    font-size: 17px;
+    padding: 5px 18px;
+    border-radius: 25px;
+    margin-right: 14px;
+    box-shadow: 0 2px 6px rgba(255, 92, 138, 0.3);
+  }
+
+  /* 莓果深紅標題 */
+  .day-title {
+    color: #d81b60;
+    font-weight: 700;
+    font-size: 18.5px;
+    letter-spacing: 0.5px;
+  }
+
+  /* 現代無邊框表格：拿掉左右邊邊與直線 */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    border: none;
+  }
+
+  /* 濃郁飽滿的暖陽金黃表頭 */
+  th {
+    background-color: #ffca4b;
+    font-weight: 700;
+    font-size: 14px;
+    padding: 9px 8px;
+    text-align: center;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 2.5px solid #f08c00;
+  }
+
+  th.col-time { width: 18%; color: #c94a1a; }
+  th.col-act  { width: 58%; color: #00796b; }
+  th.col-note { width: 24%; color: #5e35b1; }
+
+  td {
+    border: none; /* 移除左右外框與垂直格線 */
+    padding: 2px 8px;
+    font-size: 13.5px;
+    text-align: center;
+    vertical-align: middle;
+    height: 22px;
+  }
+
+  /* 以「行程」為單位整排同色：白底 vs 蜜桃奶油底 (加深對比度) */
+  .event-white {
+    background-color: #ffffff;
+  }
+  .event-tinted {
+    background-color: #fff3eb; /* 溫暖明顯的蜜桃奶油色條紋 */
+  }
+
+  /* 同一個行程內部每30分鐘的微分隔線 (極淡，不破壞整排同色感) */
+  td.time-inner-border {
+    border-bottom: 1px dashed rgba(230, 160, 125, 0.35);
+  }
+
+  /* 不同行程之間的明確水平分隔線 */
+  td.event-bottom-border {
+    border-bottom: 1.5px solid #f4ccb6;
+  }
+
+  /* 時間欄文字：暖磚橘色粗體 */
+  td.time-cell {
+    color: #d85a2b;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 1px 4px;
+    white-space: nowrap;
+  }
+
+  /* 行程欄文字：統一松石深青綠粗體字 */
+  td.act-cell {
+    color: #00796b;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  .map-link {
+    display: inline-block;
+    text-decoration: none;
+    color: #673ab7;
+    font-weight: 700;
+    font-size: 15px;
+    transition: transform 0.15s ease;
+  }
+
+  .map-link:hover {
+    transform: scale(1.15);
+  }
+
+  .toolbar {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .print-btn {
+    background-color: #ff5c8a;
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(255, 92, 138, 0.3);
+  }
+  .print-btn:hover {
+    background-color: #e64978;
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar no-print">
+  <button class="print-btn" onclick="window.print()">🖨️ 點此列印 / 另存為 PDF (請勾選「背景圖形」)</button>
+</div>
+
+<div id="app"></div>
+
+<script>
+// 將沖繩當地時間 (JST, UTC+9) 轉換為精確的 Epoch 秒數
+function getJstEpoch(year, month, day, hour, minute) {
+  return Math.floor(Date.UTC(year, month - 1, day, hour - 9, minute, 0) / 1000);
+}
+
+// 產生帶有「指定當天該時段出發 (!6e0!7e2!8j...)」與「開車(!3e0) / 步行(!3e2) / 大眾運輸公車(!3e3)」的 Google Maps 路線網址
+function makeMapUrl(orig, dest, month, day, hour, minute, mode = 'drive') {
+  const epoch = getJstEpoch(2026, month, day, hour, minute);
+  let modeParam = '!3e0';
+  if (mode === 'walk') modeParam = '!3e2';
+  if (mode === 'transit') modeParam = '!3e3';
+  return `https://www.google.com/maps/dir/${encodeURIComponent(orig)}/${encodeURIComponent(dest)}/data=!4m6!4m5!2m3!6e0!7e2!8j${epoch}${modeParam}`;
+}
+
+const daysData = [
+  {
+    day: "Day 1",
+    title: "11/14 (六) 啟程沖繩！美味海鮮與熱帶風情初體驗 🌴",
+    slots: [
+      "4:00 - 4:30", "4:30 - 5:00", "5:00 - 5:30", "5:30 - 6:00", "6:00 - 6:30",
+      "6:30 - 7:00", "7:00 - 7:30", "7:30 - 8:00", "8:00 - 8:30", "8:30 - 9:00", "9:00 - 9:30",
+      "9:30 - 10:00", "10:00 - 10:30", "10:30 - 11:00", "11:00 - 11:30", "11:30 - 12:00",
+      "12:00 - 12:30", "12:30 - 13:00", "13:00 - 13:30", "13:30 - 14:00", "14:00 - 14:30",
+      "14:30 - 15:00", "15:00 - 15:30", "15:30 - 16:00", "16:00 - 16:30", "16:30 - 17:00",
+      "17:00 - 17:30", "17:30 - 18:00", "18:00 - 18:30", "18:30 - 19:00", "19:00 - 19:30"
+    ],
+    events: [
+      { start: 0, span: 1, title: "桃園機場集合" },
+      { start: 1, span: 4, title: "等待起飛/自由活動" },
+      { start: 5, span: 6, title: "起飛沖繩" },
+      { start: 11, span: 2, title: "入境審查、提領行李<br>Pork Tamago Onigiri" },
+      { start: 13, span: 1, title: "那霸機場 - KS Rent A Car 赤嶺駅営業所 (15min)", mode: 'transit', url: makeMapUrl("Naha Airport", "KS Rent A Car Akamine Station", 11, 14, 10, 30, 'transit') },
+      { start: 14, span: 1, title: "辦理租車手續、取車出發" },
+      { start: 15, span: 1, title: "KS Rent A Car 赤嶺駅営業所 - 系滿魚市場 (25min)", url: makeMapUrl("KS Rent A Car Akamine Station", "Itoman Fish Market", 11, 14, 11, 30) },
+      { start: 16, span: 2, title: "系滿魚市場" },
+      { start: 18, span: 1, title: "系滿魚市場 - hoppepan 麵包店 (40min)", url: makeMapUrl("Itoman Fish Market", "hoppepan Urasoe Okinawa", 11, 14, 13, 0) },
+      { start: 19, span: 2, title: "hoppepan 麵包店" },
+      { start: 21, span: 1, title: "hoppepan 麵包店 - 美國村 (40min)", url: makeMapUrl("hoppepan Urasoe Okinawa", "American Village Okinawa", 11, 14, 14, 30) },
+      { start: 22, span: 7, title: "美國村<br>西松屋 北谷美浜店" },
+      { start: 29, span: 1, title: "美國村 - CONDOMINIUM BIN (40min)", url: makeMapUrl("American Village Okinawa", "CONDOMINIUM BIN Okinawa", 11, 14, 18, 30) },
+      { start: 30, span: 1, title: "CONDOMINIUM BIN 入住" }
+    ]
+  },
+  {
+    day: "Day 2",
+    title: "11/15 (日) 探索北部蔚藍海洋！水族館與古宇利島之旅 🐬",
+    slots: [
+      "8:00 - 8:30", "8:30 - 9:00", "9:00 - 9:30", "9:30 - 10:00", "10:00 - 10:30",
+      "10:30 - 11:00", "11:00 - 11:30", "11:30 - 12:00", "12:00 - 12:30", "12:30 - 13:00",
+      "13:00 - 13:30", "13:30 - 14:00", "14:00 - 14:30", "14:30 - 15:00", "15:00 - 15:30",
+      "15:30 - 16:00", "16:00 - 16:30", "16:30 - 17:00", "17:00 - 17:30", "17:30 - 18:00",
+      "18:00 - 18:30", "18:30 - 19:00", "19:00 - 19:30", "19:30 - 20:00", "20:00 - 20:30", "20:30 - 21:00"
+    ],
+    events: [
+      { start: 0, span: 3, title: "CONDOMINIUM BIN - 美麗海水族館 (70-90min)", url: makeMapUrl("CONDOMINIUM BIN Okinawa", "Okinawa Churaumi Aquarium", 11, 15, 8, 0) },
+      { start: 3, span: 5, title: "美麗海水族館" },
+      { start: 8, span: 1, title: "美麗海水族館 - 海人料理 海邦丸 (10min)", url: makeMapUrl("Okinawa Churaumi Aquarium", "Kaisenryori Kaihomaru Motobu", 11, 15, 12, 0) },
+      { start: 9, span: 3, title: "海人料理 海邦丸" },
+      { start: 12, span: 1, title: "海人料理 海邦丸 - 古宇利海灘 (30min)", url: makeMapUrl("Kaisenryori Kaihomaru Motobu", "Kouri Beach Okinawa", 11, 15, 14, 0) },
+      { start: 13, span: 6, title: "古宇利海灘<br>古宇利海洋塔" },
+      { start: 19, span: 1, title: "古宇利海灘 - 百年古家 (30min)", url: makeMapUrl("Kouri Beach Okinawa", "Ufuya Nago Okinawa", 11, 15, 17, 30) },
+      { start: 20, span: 4, title: "百年古家 大家 阿古豬" },
+      { start: 24, span: 2, title: "百年古家 - CONDOMINIUM BIN (60-70min)", url: makeMapUrl("Ufuya Nago Okinawa", "CONDOMINIUM BIN Okinawa", 11, 15, 20, 0) }
+    ]
+  },
+  {
+    day: "Day 3",
+    title: "11/16 (一) 親子同樂與購物日！兒童王國 & PARCO CITY 🛍️",
+    slots: [
+      "8:30 - 9:00", "9:00 - 9:30", "9:30 - 10:00", "10:00 - 10:30", "10:30 - 11:00",
+      "11:00 - 11:30", "11:30 - 12:00", "12:00 - 12:30", "12:30 - 13:00", "13:00 - 13:30",
+      "13:30 - 14:00", "14:00 - 14:30", "14:30 - 15:00", "15:00 - 15:30", "15:30 - 16:00",
+      "16:00 - 16:30", "16:30 - 17:00", "17:00 - 17:30", "17:30 - 18:00", "18:00 - 18:30",
+      "18:30 - 19:00", "19:00 - 19:30", "19:30 - 20:00", "20:00 - 20:30"
+    ],
+    events: [
+      { start: 0, span: 1, title: "CONDOMINIUM BIN - 沖繩兒童王國 (5-10min)", url: makeMapUrl("CONDOMINIUM BIN Okinawa", "Okinawa Zoo & Museum", 11, 16, 8, 30) },
+      { start: 1, span: 6, title: "沖繩兒童王國" },
+      { start: 7, span: 1, title: "沖繩兒童王國 - PARCO CITY (30-40min)", url: makeMapUrl("Okinawa Zoo & Museum", "PARCO CITY, 3 Chome-1-1 Irijima, Urasoe, Okinawa", 11, 16, 12, 0) },
+      { start: 8, span: 8, title: "PARCO CITY" },
+      { start: 16, span: 1, title: "PARCO CITY - Buchi Kumojiten 炭火燒肉 (15-20min)", url: makeMapUrl("PARCO CITY, 3 Chome-1-1 Irijima, Urasoe, Okinawa", "Buchi Kumojiten, 3 Chome-12-1 Kumoji, Naha, Okinawa", 11, 16, 16, 30) },
+      { start: 17, span: 4, title: "Buchi Kumojiten 炭火燒肉" },
+      { start: 21, span: 2, title: "Buchi Kumojiten - CONDOMINIUM BIN (40-60min)", url: makeMapUrl("Buchi Kumojiten, 3 Chome-12-1 Kumoji, Naha, Okinawa", "CONDOMINIUM BIN Okinawa", 11, 16, 19, 0) },
+      { start: 23, span: 1, title: "CONDOMINIUM BIN" }
+    ]
+  },
+  {
+    day: "Day 4",
+    title: "11/17 (二) 那霸市區漫遊！波上宮參拜與國際通美食 ⛩️",
+    slots: [
+      "10:00 - 10:30", "10:30 - 11:00", "11:00 - 11:30", "11:30 - 12:00", "12:00 - 12:30",
+      "12:30 - 13:00", "13:00 - 13:30", "13:30 - 14:00", "14:00 - 14:30", "14:30 - 15:00",
+      "15:00 - 15:30", "15:30 - 16:00", "16:00 - 16:30", "16:30 - 17:00", "17:00 - 17:30",
+      "17:30 - 18:00", "18:00 - 18:30", "18:30 - 19:00", "19:00 - 19:30", "19:30 - 20:00",
+      "20:00 - 20:30", "20:30 - 21:00", "21:00 - 21:30"
+    ],
+    events: [
+      { start: 0, span: 1, title: "CONDOMINIUM BIN - 波上宮 (30-40min)", url: makeMapUrl("CONDOMINIUM BIN Okinawa", "Naminoue Shrine Naha", 11, 17, 10, 0) },
+      { start: 1, span: 2, title: "波上宮" },
+      { start: 3, span: 1, title: "波上宮 - 國際通 (10min)", url: makeMapUrl("Naminoue Shrine Naha", "Kokusai Dori Naha", 11, 17, 11, 30) },
+      { start: 4, span: 9, title: "國際通" },
+      { start: 13, span: 8, title: "島唄ライブ居酒屋 琉星<br>Ryukyusakaba Ryusei (走路10min)", mode: 'walk', url: makeMapUrl("Kokusai Dori Naha", "Ryukyusakaba Ryusei, 島唄ライブ居酒屋 琉星, Naha", 11, 17, 16, 30, 'walk') },
+      { start: 21, span: 2, title: "島唄ライブ居酒屋 琉星 - CONDOMINIUM BIN (30-40min)", url: makeMapUrl("Ryukyusakaba Ryusei, 島唄ライブ居酒屋 琉星, Naha", "CONDOMINIUM BIN Okinawa", 11, 17, 20, 30) }
+    ]
+  },
+  {
+    day: "Day 5",
+    title: "11/18 (三) 完美收官！DMM水族館、Outlet 與瀨長島 ✈️",
+    slots: [
+      "8:30 - 9:00", "9:00 - 9:30", "9:30 - 10:00", "10:00 - 10:30", "10:30 - 11:00",
+      "11:00 - 11:30", "11:30 - 12:00", "12:00 - 12:30", "12:30 - 13:00", "13:00 - 13:30",
+      "13:30 - 14:00", "14:00 - 14:30", "14:30 - 15:00", "15:00 - 15:30", "15:30 - 16:00",
+      "16:00 - 16:30", "16:30 - 17:00"
+    ],
+    events: [
+      { start: 0, span: 2, title: "CONDOMINIUM BIN - DMM Kariyushi水族館 (30-50min)", url: makeMapUrl("CONDOMINIUM BIN Okinawa", "DMM Kariyushi Aquarium", 11, 18, 8, 30) },
+      { start: 2, span: 4, title: "DMM Kariyushi水族館" },
+      { start: 6, span: 4, title: "ASHIBINAA Outlet (走路10min)", mode: 'walk', url: makeMapUrl("DMM Kariyushi Aquarium", "Okinawa Outlet Mall Ashibinaa", 11, 18, 11, 30, 'walk') },
+      { start: 10, span: 1, title: "ASHIBINAA Outlet - 瀨長島 (15min)", url: makeMapUrl("Okinawa Outlet Mall Ashibinaa", "Senagajima Umikaji Terrace", 11, 18, 13, 30) },
+      { start: 11, span: 3, title: "瀨長島" },
+      { start: 14, span: 1, title: "瀨長島 - KS Rent A Car 赤嶺駅営業所 (15min)", url: makeMapUrl("Senagajima Umikaji Terrace", "KS Rent A Car Akamine Station", 11, 18, 15, 30) },
+      { start: 15, span: 1, title: "KS Rent A Car 赤嶺駅営業所 還車" },
+      { start: 16, span: 1, title: "KS Rent A Car 赤嶺駅営業所 - 那霸機場 (15min)", mode: 'transit', url: makeMapUrl("KS Rent A Car Akamine Station", "Naha Airport", 11, 18, 16, 30, 'transit') }
+    ]
+  }
+];
+
+const app = document.getElementById('app');
+
+daysData.forEach(dayObj => {
+  const page = document.createElement('div');
+  page.className = 'page';
+
+  // Header
+  const header = document.createElement('div');
+  header.className = 'day-header';
+  header.innerHTML = `
+    <div class="day-badge">${dayObj.day}</div>
+    <div class="day-title">${dayObj.title}</div>
+  `;
+  page.appendChild(header);
+
+  // Table
+  const table = document.createElement('table');
+  table.innerHTML = `
+    <thead>
+      <tr>
+        <th class="col-time">⏰ 時間</th>
+        <th class="col-act">📍 行程景點 / 活動</th>
+        <th class="col-note">💡 備註</th>
+      </tr>
+    </thead>
+  `;
+
+  const tbody = document.createElement('tbody');
+  
+  // 將每一個 30 分鐘時段對應到它所屬的「行程」，確保整排(時間+行程+備註)顏色100%同步！
+  const eventMap = {};
+  const slotToEvent = {};
+  dayObj.events.forEach((ev, eventIndex) => {
+    ev.bgClass = (eventIndex % 2 === 1) ? 'event-tinted' : 'event-white';
+    eventMap[ev.start] = ev;
+    for (let i = 0; i < ev.span; i++) {
+      slotToEvent[ev.start + i] = {
+        ev: ev,
+        isLastSlotOfEvent: (i === ev.span - 1)
+      };
+    }
+  });
+
+  dayObj.slots.forEach((slotText, idx) => {
+    const tr = document.createElement('tr');
+    const slotInfo = slotToEvent[idx];
+    const bgClass = slotInfo ? slotInfo.ev.bgClass : 'event-white';
+    const timeBorderClass = (slotInfo && slotInfo.isLastSlotOfEvent) ? 'event-bottom-border' : 'time-inner-border';
+
+    // 1. 時間欄 (與所屬行程完全同色，並在行程結束時畫實線、行程內部畫淡虛線)
+    const tdTime = document.createElement('td');
+    tdTime.className = `time-cell ${bgClass} ${timeBorderClass}`;
+    tdTime.textContent = slotText;
+    tr.appendChild(tdTime);
+
+    // 2. 行程欄與備註欄 (當該行程開始時建立，並整排套用相同的 bgClass 與底部邊框)
+    if (eventMap[idx]) {
+      const ev = eventMap[idx];
+      
+      const tdAct = document.createElement('td');
+      tdAct.className = `act-cell ${ev.bgClass} event-bottom-border`;
+      if (ev.span > 1) tdAct.rowSpan = ev.span;
+      tdAct.innerHTML = ev.title;
+      tr.appendChild(tdAct);
+
+      const tdNote = document.createElement('td');
+      tdNote.className = `note-cell ${ev.bgClass} event-bottom-border`;
+      if (ev.span > 1) tdNote.rowSpan = ev.span;
+      if (ev.url) {
+        let icon = '🚗 📍';
+        if (ev.mode === 'walk') icon = '🚶 📍';
+        if (ev.mode === 'transit') icon = '🚌 📍';
+        tdNote.innerHTML = `<a class="map-link" href="${ev.url}" target="_blank" title="開啟 Google Maps 導航 (已鎖定當天該時段出發)">${icon}</a>`;
+      }
+      tr.appendChild(tdNote);
+    }
+
+    tbody.appendChild(tr);
+  });
+
+  table.appendChild(tbody);
+  page.appendChild(table);
+  app.appendChild(page);
+});
+</script>
+</body>
+</html>

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日本沖繩_四代同堂五日遊_20261118</title>
+  <title>日本沖繩_四代同堂五日遊_20261114</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Google Fonts -->
@@ -72,12 +72,12 @@
           </div>
           <div>
             <div class="text-[11px] text-sky-100 font-medium">家族團體成員</div>
-            <div class="text-sm font-black text-white">總共 25 人 <span class="text-amber-200 font-bold">(18大含長輩 + 7小)</span></div>
+            <div class="text-sm font-black text-white">共 25 人 <span class="text-amber-200 font-bold">(18大 + 7小)</span></div>
           </div>
         </div>
       </div>
 
-      <!-- 4張頂部主功能卡 (清爽海洋色調、主功能標題放大) -->
+      <!-- 4張頂部主功能卡 (網址統一由下方 LINKS_CONFIG 自動帶入) -->
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
         
         <!-- 1. 住宿資訊 -->
@@ -95,9 +95,9 @@
         </a>
 
         <!-- 2. 租車憑證 -->
-        <a href="https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgBMZgl5WFqPQ6HPqFJBFnaAARIxrmqN8CASP0D_PrFQ3XQ?e=7sNWfM"
+        <a data-link="rentalVoucher"
            target="_blank" rel="noopener"
-           class="link-rental-voucher group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-teal-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
+           class="group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-teal-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
           <span class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs group-hover:bg-teal-600 group-hover:text-white transition">
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </span>
@@ -110,9 +110,9 @@
         </a>
 
         <!-- 3. 全島攻略地圖 -->
-        <a href="https://maps.app.goo.gl/skY7Nm5dNp28eCVR7"
+        <a data-link="islandMap"
            target="_blank" rel="noopener"
-           class="link-island-map group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-emerald-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
+           class="group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-emerald-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
           <span class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs group-hover:bg-emerald-600 group-hover:text-white transition">
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </span>
@@ -125,9 +125,9 @@
         </a>
 
         <!-- 4. 航班資訊 -->
-        <a href="https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgAOhknfPu3zRY8MP_AEDnY8AYR0qWBxvby35wdlzx7P2lI?e=xvfTvT"
+        <a data-link="flightInfo"
            target="_blank" rel="noopener"
-           class="link-flight-info group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-indigo-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
+           class="group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-indigo-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
           <span class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs group-hover:bg-indigo-600 group-hover:text-white transition">
             <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
           </span>
@@ -303,8 +303,8 @@
               <span class="text-base">🏯🥩</span>
               <span class="font-bold text-slate-800">美國村 / 西松屋 北谷美浜店 (晚餐自理)</span>
             </div>
-            <a href="https://www.google.com/maps/@26.2046305,127.6763832,12z?entry=ttu&g_ep=EgoyMDI2MTEwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"
-               class="link-nearby-american-village shrink-0 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-200 text-xs font-bold transition">
+            <a data-link="nearbyAmericanVillage" target="_blank" rel="noopener"
+               class="shrink-0 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-200 text-xs font-bold transition">
               🌟 周遭景點
             </a>
           </div>
@@ -451,8 +451,8 @@
               <span class="text-base">🥩</span>
               <span class="font-bold text-slate-800">百年古家 大家 阿古豬</span>
             </div>
-            <a href="https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgDhdbVhnSQXSr2zoryQm1wrAY1K2mBLCykIGvOHuyQ5UvU?e=JqDmY7" target="_blank" rel="noopener"
-               class="link-booking-ufuya shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 text-xs font-bold transition">
+            <a data-link="bookingUfuya" target="_blank" rel="noopener"
+               class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 text-xs font-bold transition">
               📋 訂餐資訊
             </a>
           </div>
@@ -573,8 +573,8 @@
               <span class="text-base">🥩</span>
               <span class="font-bold text-slate-800">Buchi Kumojiten 炭火燒肉</span>
             </div>
-            <a href="https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgDAP7gR504uRbZVa6RNlZGSAZONAy91RCv6BaEBwEidL1Y?e=peI8Y4" target="_blank" rel="noopener"
-               class="link-booking-buchi shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 text-xs font-bold transition">
+            <a data-link="bookingBuchi" target="_blank" rel="noopener"
+               class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 text-xs font-bold transition">
               📋 訂餐資訊
             </a>
           </div>
@@ -695,8 +695,8 @@
               <span class="text-base">🏯🥩</span>
               <span class="font-bold text-slate-800">國際通 (午餐自理)</span>
             </div>
-            <a href="https://www.google.com/maps/@26.2046305,127.6763832,12z?entry=ttu&g_ep=EgoyMDI2MTEwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"
-               class="link-nearby-kokusai shrink-0 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-200 text-xs font-bold transition">
+            <a data-link="nearbyKokusai" target="_blank" rel="noopener"
+               class="shrink-0 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-200 text-xs font-bold transition">
               🌟 周遭景點
             </a>
           </div>
@@ -793,7 +793,7 @@
             </div>
             <a data-route
                data-origin="DMM Kariyushi Aquarium, Okinawa"
-               data-dest="Okinawa Outlet Mall Ashibinaa"
+               data-dest="iias Okinawa Toyosaki"
                data-date="2026-11-18"
                data-time="11:30"
                data-mode="2"
@@ -810,7 +810,7 @@
               <span class="font-bold text-slate-800">iias 沖繩豐崎 - 瀨長島 <span class="text-xs font-normal text-slate-500 ml-1">(15min)</span></span>
             </div>
             <a data-route
-               data-origin="Okinawa Outlet Mall Ashibinaa"
+               data-origin="iias Okinawa Toyosaki"
                data-dest="Senagajima Umikaji Terrace, Okinawa"
                data-date="2026-11-18"
                data-time="13:30"
@@ -827,8 +827,8 @@
               <span class="text-base">🏯</span>
               <span class="font-bold text-slate-800">瀨長島</span>
             </div>
-            <a href="https://www.google.com/maps/@26.2046305,127.6763832,12z?entry=ttu&g_ep=EgoyMDI2MTEwMS4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener"
-               class="link-nearby-senagajima shrink-0 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-200 text-xs font-bold transition">
+            <a data-link="nearbySenagajima" target="_blank" rel="noopener"
+               class="shrink-0 inline-flex items-center gap-1 px-3 py-1 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-200 text-xs font-bold transition">
               🌟 周遭景點
             </a>
           </div>
@@ -902,7 +902,7 @@
         <div class="rounded-xl border border-sky-200 bg-sky-50/40 p-4">
           <div class="flex items-center justify-between border-b border-sky-200 pb-2.5 mb-3">
             <h3 class="text-sm font-black text-sky-800 underline underline-offset-4">
-              Three-Bedroom Villa 2nd floor
+              2F 三房
             </h3>
             <span class="px-2 py-0.5 rounded bg-sky-600 text-white text-xs font-bold">2F</span>
           </div>
@@ -926,7 +926,7 @@
         <div class="rounded-xl border border-teal-200 bg-teal-50/40 p-4">
           <div class="flex items-center justify-between border-b border-teal-200 pb-2.5 mb-3">
             <h3 class="text-sm font-black text-teal-800 underline underline-offset-4">
-              Three-Bedroom Villa 3rd floor
+              3F 三房
             </h3>
             <span class="px-2 py-0.5 rounded bg-teal-600 text-white text-xs font-bold">3F</span>
           </div>
@@ -950,7 +950,7 @@
         <div class="rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
           <div class="flex items-center justify-between border-b border-indigo-200 pb-2.5 mb-3">
             <h3 class="text-sm font-black text-indigo-800 underline underline-offset-4">
-              Three-Bedroom Villa 4th floor
+              4F 三房
             </h3>
             <span class="px-2 py-0.5 rounded bg-indigo-600 text-white text-xs font-bold">4F</span>
           </div>
@@ -983,11 +983,10 @@
 
   </main>
 
-  <!-- ================= 集中管理設定區 (日後更新連結或新增攻略超方便！) ================= -->
+  <!-- ================= 集中管理設定區 (全站唯一修改網址與攻略的地方！) ================= -->
   <script>
     /**
-     * 🔧 1. 連結集中管理區：
-     * 日後拿到正式連結時，只需替換這裡的網址即可！
+     * 🔧 1. 連結集中管理區 (全站唯一來源，改這裡就會自動套用到對應按鈕！)
      */
     const LINKS_CONFIG = {
       // 頂部：租車憑證 (8人座車x4)
@@ -996,13 +995,13 @@
       // 頂部：全島攻略地圖
       islandMap: "https://maps.app.goo.gl/skY7Nm5dNp28eCVR7",
       
-      // 頂部：航班資訊 (保留供後續替換連結)
+      // 頂部：航班資訊
       flightInfo: "https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgAOhknfPu3zRY8MP_AEDnY8AYR0qWBxvby35wdlzx7P2lI?e=xvfTvT",
 
       // 景點：🌟周遭景點 (美國村、國際通、瀨長島)
-      nearbyAmericanVillage: "https://www.google.com/maps/@26.2046305,127.6763832,12z?entry=ttu&g_ep=EgoyMDI2MTEwMS4wIKXMDSoASAFQAw%3D%3D",
-      nearbyKokusai: "https://www.google.com/maps/@26.2046305,127.6763832,12z?entry=ttu&g_ep=EgoyMDI2MTEwMS4wIKXMDSoASAFQAw%3D%3D",
-      nearbySenagajima: "https://www.google.com/maps/@26.2046305,127.6763832,12z?entry=ttu&g_ep=EgoyMDI2MTEwMS4wIKXMDSoASAFQAw%3D%3D",
+      nearbyAmericanVillage: "https://maps.app.goo.gl/HqKgrDpVFo7cpHoZ6",
+      nearbyKokusai: "https://maps.app.goo.gl/pXjuxnEt2RqWAeU36",
+      nearbySenagajima: "https://maps.app.goo.gl/NhbDta1HKRWEAbyz9",
 
       // 餐廳：📋訂餐資訊 (百年古家 大家、Buchi 炭火燒肉)
       bookingUfuya: "https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgDhdbVhnSQXSr2zoryQm1wrAY1K2mBLCykIGvOHuyQ5UvU?e=JqDmY7",
@@ -1014,23 +1013,25 @@
      */
     const CUSTOM_NOTES = [
       {
-        title: "🚗 自駕與還車提醒",
+        title: "🌤️ 沖繩中央氣象廳預報",
         items: [
-          "必備：台灣駕照正本 + 日文譯本 + 護照。",
-          "還車前請加滿油（Regular 紅色油槍）。"
+          "出發前與每日出門前，可隨時查看日本氣象廳最新天氣與降雨機率：",
+          { label: "查看沖繩本島天氣預報 (JMA)", url: "https://www.data.jma.go.jp/multi/yoho/yoho_detail.html?code=471020&lang=cn_zt" }
         ]
       },
       {
-        title: "🛂 入境準備",
+        title: "🛍️ 退稅新制注意事項",
         items: [
-          "出發前完成 Visit Japan Web 登錄並截圖 QR Code。",
-          "11月沖繩早晚微涼，建議攜帶薄外套。"
+          "2026 日本最新退稅規定、流程與注意事項懶人包：",
+          { label: "2026 日本退稅新制完整指南", url: "https://qmonster.cc/japan-tax-refund-guide-2026/" }
         ]
       },
       {
-        title: "📌 其他補充攻略",
+        title: "📌 熱門景點攻略",
         items: [
-          "（預留位置，可隨時新增景點或購物攻略連結）"
+          { label: "📌 國際通攻略", url: "https://bobbytravel.tw/kokusai-street/" },
+          { label: "📌 美國村攻略", url: "https://bobbytravel.tw/american-village/" },
+          { label: "📌 瀨長島攻略", url: "https://bobbytravel.tw/senaga-island/" }
         ]
       }
     ];
@@ -1053,31 +1054,43 @@
       });
     }
 
+    // 自動把 LINKS_CONFIG 綁定到對應的 data-link 按鈕上
     function applyLinks() {
-      const bindHref = (selector, url) => {
-        document.querySelectorAll(selector).forEach(el => el.href = url);
-      };
-      bindHref('.link-rental-voucher', LINKS_CONFIG.rentalVoucher);
-      bindHref('.link-island-map', LINKS_CONFIG.islandMap);
-      bindHref('.link-flight-info', LINKS_CONFIG.flightInfo);
-      bindHref('.link-nearby-american-village', LINKS_CONFIG.nearbyAmericanVillage);
-      bindHref('.link-nearby-kokusai', LINKS_CONFIG.nearbyKokusai);
-      bindHref('.link-nearby-senagajima', LINKS_CONFIG.nearbySenagajima);
-      bindHref('.link-booking-ufuya', LINKS_CONFIG.bookingUfuya);
-      bindHref('.link-booking-buchi', LINKS_CONFIG.bookingBuchi);
+      document.querySelectorAll('a[data-link]').forEach(el => {
+        const key = el.dataset.link;
+        if (LINKS_CONFIG[key]) {
+          el.href = LINKS_CONFIG[key];
+        }
+      });
     }
 
     function renderNotes() {
       const grid = document.getElementById('notes-grid');
       grid.innerHTML = CUSTOM_NOTES.map(note => `
-        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4">
-          <h3 class="font-bold text-sm text-slate-800 mb-2">${note.title}</h3>
-          <ul class="space-y-1.5 text-xs text-slate-600 leading-relaxed">
-            ${note.items.map(i => `<li>• ${i}</li>`).join('')}
-          </ul>
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-sm text-slate-800 mb-2.5">${note.title}</h3>
+            <ul class="space-y-2 text-xs text-slate-600 leading-relaxed">
+              ${note.items.map(item => {
+                if (typeof item === 'string') {
+                  return `<li class="flex items-start gap-1.5"><span class="text-slate-400">•</span><span>${item}</span></li>`;
+                }
+                return `
+                  <li>
+                    <a href="${item.url}" target="_blank" rel="noopener"
+                       class="inline-flex items-center justify-between w-full px-3 py-2 rounded-lg bg-white hover:bg-sky-50 text-sky-700 border border-slate-200 hover:border-sky-300 font-bold shadow-sm transition">
+                      <span>${item.label}</span>
+                      <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                    </a>
+                  </li>
+                `;
+              }).join('')}
+            </ul>
+          </div>
         </div>
       `).join('');
     }
+
 
     function filterDay(dayId) {
       document.querySelectorAll('.day-panel').forEach(panel => {

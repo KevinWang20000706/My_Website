@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日本沖繩_四代同堂五日遊_20261114</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Noto Sans TC"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      background-color: #f1f5f9;
+      background-image: radial-gradient(#cbd5e1 0.75px, transparent 0.75px);
+      background-size: 18px 18px;
+    }
+    @media print {
+      .no-print { display: none !important; }
+      .day-panel { display: block !important; page-break-after: always; }
+    }
+  </style>
+</head>
+<body class="text-slate-800 antialiased pb-20">
+
+  <!-- ================= 頂部海島橫幅 + 4 大主功能按鈕卡 ================= -->
+  <header class="relative bg-gradient-to-br from-sky-800 via-cyan-700 to-teal-600 text-white overflow-hidden shadow-xl">
+    <!-- 裝飾光暈與海浪背景 -->
+    <div class="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-sky-300/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute -bottom-24 -left-24 w-96 h-96 rounded-full bg-teal-300/20 blur-3xl pointer-events-none"></div>
+    <div class="absolute inset-0 opacity-10 pointer-events-none">
+      <svg class="w-full h-full" viewBox="0 0 1440 320" preserveAspectRatio="none">
+        <path fill="#ffffff" d="M0,160L60,170.7C120,181,240,203,360,192C480,181,600,139,720,138.7C840,139,960,181,1080,186.7C1200,192,1320,160,1380,144L1440,128L1440,320L1380,320C1320,320,1200,320,1080,320C960,320,840,320,720,320C600,320,480,320,360,320C240,320,120,320,60,320L0,320Z"></path>
+      </svg>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 pt-9 pb-12 relative z-10">
+      
+      <!-- 主視覺標題區 -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8">
+        <div>
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/25 text-white text-xs font-bold">
+              🌺 OKINAWA FAMILY TRIP
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-400 text-slate-900 text-xs font-black shadow-sm">
+              <i class="fa-regular fa-calendar"></i> 2026/11/14 (六) - 11/18 (三)
+            </span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-black tracking-tight drop-shadow-sm">
+            日本沖繩 <span class="text-amber-300">四代同堂五日遊</span>
+          </h1>
+        </div>
+
+        <!-- 團體人數徽章 -->
+        <div class="inline-flex items-center gap-3 bg-white/15 backdrop-blur-md border border-white/25 rounded-2xl px-4 py-2.5 self-start md:self-end">
+          <div class="w-9 h-9 rounded-xl bg-white/20 flex items-center justify-center text-lg">
+            👨‍👩‍👧‍👦
+          </div>
+          <div>
+            <div class="text-[11px] text-sky-100 font-medium">家族團體成員</div>
+            <div class="text-sm font-black text-white">共 25 人 <span class="text-amber-200 font-bold">(18大 + 7小)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4張頂部主功能卡 -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <!-- 1. 住宿資訊 -->
+        <a href="#room-section"
+           class="group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-sky-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
+          <span class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-sky-100 text-sky-600 flex items-center justify-center text-xs group-hover:bg-sky-600 group-hover:text-white transition">
+            <i class="fa-solid fa-arrow-down"></i>
+          </span>
+          <div class="w-11 h-11 rounded-2xl bg-sky-50 border border-sky-100 flex items-center justify-center text-xl mb-2.5">
+            🏨
+          </div>
+          <div class="text-xl font-black text-slate-800 group-hover:text-sky-700 transition">住宿資訊</div>
+          <div class="text-sm font-bold text-sky-700 mt-1">CONDOMINIUM BIN</div>
+          <div class="text-xs text-slate-400 mt-0.5">點擊跳至 2F / 3F / 4F 分房表</div>
+        </a>
+
+        <!-- 2. 租車憑證 -->
+        <a data-link="rentalVoucher"
+           target="_blank" rel="noopener"
+           class="group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-teal-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
+          <span class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-teal-100 text-teal-600 flex items-center justify-center text-xs group-hover:bg-teal-600 group-hover:text-white transition">
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </span>
+          <div class="w-11 h-11 rounded-2xl bg-teal-50 border border-teal-100 flex items-center justify-center text-xl mb-2.5">
+            🚗
+          </div>
+          <div class="text-xl font-black text-slate-800 group-hover:text-teal-700 transition">租車憑證</div>
+          <div class="text-sm font-bold text-teal-700 mt-1">8人座車 x 4 台</div>
+          <div class="text-xs text-slate-400 mt-0.5">KS Rent A Car 赤嶺駅営業所</div>
+        </a>
+
+        <!-- 3. 全島攻略地圖 -->
+        <a data-link="islandMap"
+           target="_blank" rel="noopener"
+           class="group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-emerald-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
+          <span class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center text-xs group-hover:bg-emerald-600 group-hover:text-white transition">
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </span>
+          <div class="w-11 h-11 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-xl mb-2.5">
+            🗺️
+          </div>
+          <div class="text-xl font-black text-slate-800 group-hover:text-emerald-700 transition">全島攻略地圖</div>
+          <div class="text-sm font-bold text-emerald-700 mt-1">沖繩全島地圖</div>
+          <div class="text-xs text-slate-400 mt-0.5">點擊開啟 Google Maps 總覽</div>
+        </a>
+
+        <!-- 4. 航班資訊 -->
+        <a data-link="flightInfo"
+           target="_blank" rel="noopener"
+           class="group relative bg-white/95 hover:bg-white text-slate-800 rounded-2xl p-5 border border-indigo-200/80 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-200 flex flex-col items-center text-center">
+          <span class="absolute top-3.5 right-3.5 w-6 h-6 rounded-full bg-indigo-100 text-indigo-600 flex items-center justify-center text-xs group-hover:bg-indigo-600 group-hover:text-white transition">
+            <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+          </span>
+          <div class="w-11 h-11 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-xl mb-2.5">
+            ✈️
+          </div>
+          <div class="text-xl font-black text-slate-800 group-hover:text-indigo-700 transition">航班資訊</div>
+          <div class="text-sm font-bold text-indigo-700 mt-1">長榮 BR112 / BR185</div>
+          <div class="text-xs text-slate-400 mt-0.5">桃園 TPE ⇄ 那霸 OKA</div>
+        </a>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= 主內容容器 ================= -->
+  <main class="max-w-6xl mx-auto px-4 sm:px-6 -mt-4 relative z-20 space-y-6">
+
+    <!-- 圖示說明 ＆ 天數切換導覽列 -->
+    <section class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-4 flex flex-col md:flex-row md:items-center justify-between gap-3">
+      <div class="flex flex-wrap items-center gap-2.5 text-xs font-medium text-slate-600">
+        <span class="text-slate-400 font-bold">圖示：</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100">✈️ 航班</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100">🚌 接駁</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100">🚙 自駕</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100">🚶 步行</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100">🥩 吃飯</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100">🏯 景點</span>
+        <span class="px-2 py-0.5 rounded bg-slate-100">♨️ 民宿</span>
+      </div>
+
+      <div class="flex flex-wrap gap-1.5 no-print" id="day-tabs">
+        <button onclick="filterDay('all')" data-tab="all" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-sky-600 text-white shadow-sm transition">
+          全部天數
+        </button>
+        <button onclick="filterDay('day1')" data-tab="day1" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+          Day 1 (11/14)
+        </button>
+        <button onclick="filterDay('day2')" data-tab="day2" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+          Day 2 (11/15)
+        </button>
+        <button onclick="filterDay('day3')" data-tab="day3" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+          Day 3 (11/16)
+        </button>
+        <button onclick="filterDay('day4')" data-tab="day4" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+          Day 4 (11/17)
+        </button>
+        <button onclick="filterDay('day5')" data-tab="day5" class="tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition">
+          Day 5 (11/18)
+        </button>
+      </div>
+    </section>
+
+    <!-- ================= 五日行程時間軸區塊 (保留每日專屬配色 + 備註標籤置中) ================= -->
+    <div id="itinerary-container" class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+
+      <!-- ==================== DAY 1 (11/14) 海洋藍 ==================== -->
+      <section id="day1" class="day-panel bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden">
+        <div class="bg-gradient-to-r from-sky-600 to-cyan-500 px-5 py-3.5 text-white flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded-lg bg-white text-sky-700 font-black text-xs shadow-sm">DAY 1</span>
+            <h2 class="text-base font-bold">抵達那霸・取車・hoppepan・美國村</h2>
+          </div>
+          <span class="text-xs font-bold bg-white/20 px-2.5 py-1 rounded-full shrink-0">2026/11/14 (六)</span>
+        </div>
+
+        <div class="p-5 sm:p-6">
+          <div class="relative pl-6 border-l-2 border-sky-200 space-y-6">
+            
+            <!-- 04:00 - 06:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
+              <div class="text-xs font-bold text-slate-400">04:00 - 06:30</div>
+              <div class="text-sm text-slate-600 font-medium mt-0.5">🏯 桃園機場集合 (04:00) ➔ 等待起飛 / 自由活動</div>
+            </div>
+
+            <!-- 06:30 - 09:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-sky-500 border-4 border-white shadow"></div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold px-2 py-0.5 rounded bg-sky-50 text-sky-700">06:30 - 09:30</span>
+                <span class="text-xs text-slate-400"><i class="fa-solid fa-plane"></i> 長榮 BR112</span>
+              </div>
+              <div class="font-bold text-slate-800 mt-1">✈️ 起飛沖繩（桃園 TPE ➔ 那霸 OKA）</div>
+            </div>
+
+            <!-- 09:30 - 10:30 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-sky-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-sky-50/90 to-cyan-50/50 border border-sky-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-sky-600 text-white mb-1.5">09:30 - 10:30</span>
+                  <h3 class="text-base font-black text-slate-800">🥩 入境審查、提領行李 / Pork Tamago Onigiri</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 10:30 - 11:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">10:30 - 11:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-bus"></i> 15 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚌 那霸機場 ➔ KS Rent A Car 赤嶺駅営業所</div>
+                </div>
+                <a data-route data-origin="那霸機場" data-dest="KS Rent A Car 赤嶺駅営業所" data-date="2026-11-14" data-time="10:30" data-mode="3" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 11:00 - 11:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
+              <div class="text-xs font-bold text-slate-400">11:00 - 11:30</div>
+              <div class="text-sm font-bold text-slate-700 mt-0.5">🏯 辦理租車手續、取車出發</div>
+            </div>
+
+            <!-- 11:30 - 12:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">11:30 - 12:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 20-30 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">
+                    🚙 KS Rent A Car 赤嶺駅営業所 ➔ hoppepan 麵包店
+                    <div class="text-xs font-bold text-emerald-600 mt-0.5">[B組支線：Costco 採買 ➔ 美國村集合]</div>
+                  </div>
+                </div>
+                <a data-route data-origin="KS Rent A Car 赤嶺駅営業所" data-dest="hoppepan" data-date="2026-11-14" data-time="11:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 12:00 - 13:00 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-sky-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-sky-50/90 to-cyan-50/50 border border-sky-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-sky-600 text-white mb-1.5">12:00 - 13:00</span>
+                  <h3 class="text-base font-black text-slate-800">🥩 hoppepan 麵包店</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 13:00 - 13:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">13:00 - 13:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 40 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 hoppepan 麵包店 ➔ 美國村</div>
+                </div>
+                <a data-route data-origin="hoppepan" data-dest="美國村" data-date="2026-11-14" data-time="13:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 13:30 - 18:30 (備註按鈕垂直置中) -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-sky-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-sky-50/90 to-cyan-50/50 border border-sky-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-sky-600 text-white mb-1.5">13:30 - 18:30</span>
+                  <h3 class="text-base font-black text-slate-800">🏯🥩 美國村 / 西松屋 北谷美浜店 (晚餐自理)</h3>
+                  <div class="text-xs font-bold text-emerald-600 mt-1">[B組支線會合]</div>
+                </div>
+                <a data-link="nearbyAmericanVillage" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-300 text-xs font-bold shadow-sm transition">
+                  🌟 周遭景點
+                </a>
+              </div>
+            </div>
+
+            <!-- 18:30 - 19:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">18:30 - 19:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 40 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 美國村 ➔ CONDOMINIUM BIN</div>
+                </div>
+                <a data-route data-origin="美國村" data-dest="CONDOMINIUM BIN (コンドミニアム ビン)" data-date="2026-11-14" data-time="18:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 19:00 - 19:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-white shadow"></div>
+              <div class="text-xs font-bold text-purple-600">19:00 - 19:30</div>
+              <div class="text-sm font-bold text-slate-800 mt-0.5">♨️ CONDOMINIUM BIN 入住</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== DAY 2 (11/15) 翡翠綠 ==================== -->
+      <section id="day2" class="day-panel bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden">
+        <div class="bg-gradient-to-r from-teal-600 to-emerald-500 px-5 py-3.5 text-white flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded-lg bg-white text-teal-700 font-black text-xs shadow-sm">DAY 2</span>
+            <h2 class="text-base font-bold">美麗海水族館・古宇利島・百年古家</h2>
+          </div>
+          <span class="text-xs font-bold bg-white/20 px-2.5 py-1 rounded-full shrink-0">2026/11/15 (日)</span>
+        </div>
+
+        <div class="p-5 sm:p-6">
+          <div class="relative pl-6 border-l-2 border-teal-200 space-y-6">
+
+            <!-- 08:00 - 09:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">08:00 - 09:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 70-90 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 CONDOMINIUM BIN ➔ 美麗海水族館</div>
+                </div>
+                <a data-route data-origin="CONDOMINIUM BIN (コンドミニアム ビン)" data-dest="沖繩美麗海水族館" data-date="2026-11-15" data-time="08:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 09:30 - 12:00 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-teal-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-teal-50/90 to-emerald-50/50 border border-teal-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-teal-600 text-white mb-1.5">09:30 - 12:00</span>
+                  <h3 class="text-base font-black text-slate-800">🏯 美麗海水族館</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12:00 - 12:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">12:00 - 12:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 10 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 美麗海水族館 ➔ 海人料理 海邦丸</div>
+                </div>
+                <a data-route data-origin="沖繩美麗海水族館" data-dest="海人料理 海邦丸" data-date="2026-11-15" data-time="12:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 12:30 - 14:00 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-teal-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-teal-50/90 to-emerald-50/50 border border-teal-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-teal-600 text-white mb-1.5">12:30 - 14:00</span>
+                  <h3 class="text-base font-black text-slate-800">🥩 海人料理 海邦丸</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 14:00 - 14:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">14:00 - 14:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 30 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 海人料理 海邦丸 ➔ 古宇利海灘</div>
+                </div>
+                <a data-route data-origin="海人料理 海邦丸" data-dest="古宇利ビーチ" data-date="2026-11-15" data-time="14:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 14:30 - 17:30 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-teal-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-teal-50/90 to-emerald-50/50 border border-teal-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-teal-600 text-white mb-1.5">14:30 - 17:30</span>
+                  <h3 class="text-base font-black text-slate-800">🏯 古宇利海灘 / 古宇利海洋塔</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 17:30 - 18:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">17:30 - 18:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 30 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 古宇利海灘 ➔ 百年古家</div>
+                </div>
+                <a data-route data-origin="古宇利ビーチ" data-dest="百年古家 大家 阿古豬" data-date="2026-11-15" data-time="17:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 18:00 - 20:00 (備註按鈕垂直置中) -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-teal-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-teal-50/90 to-emerald-50/50 border border-teal-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-teal-600 text-white mb-1.5">18:00 - 20:00</span>
+                  <h3 class="text-base font-black text-slate-800">🥩 百年古家 大家 阿古豬</h3>
+                </div>
+                <a data-link="bookingUfuya" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 text-xs font-bold shadow-sm transition">
+                  📋 訂餐資訊
+                </a>
+              </div>
+            </div>
+
+            <!-- 20:00 - 21:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">20:00 - 21:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 60-70 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 百年古家 ➔ CONDOMINIUM BIN</div>
+                </div>
+                <a data-route data-origin="百年古家 大家 阿古豬" data-dest="CONDOMINIUM BIN (コンドミニアム ビン)" data-date="2026-11-15" data-time="20:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 21:00 - 21:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-white shadow"></div>
+              <div class="text-xs font-bold text-purple-600">21:00 - 21:30</div>
+              <div class="text-sm font-bold text-slate-800 mt-0.5">♨️ CONDOMINIUM BIN 入住</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== DAY 3 (11/16) 陽光橘 ==================== -->
+      <section id="day3" class="day-panel bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden">
+        <div class="bg-gradient-to-r from-amber-500 to-orange-500 px-5 py-3.5 text-white flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded-lg bg-white text-amber-700 font-black text-xs shadow-sm">DAY 3</span>
+            <h2 class="text-base font-bold">沖繩兒童王國・PARCO CITY・炭火燒肉</h2>
+          </div>
+          <span class="text-xs font-bold bg-white/20 px-2.5 py-1 rounded-full shrink-0">2026/11/16 (一)</span>
+        </div>
+
+        <div class="p-5 sm:p-6">
+          <div class="relative pl-6 border-l-2 border-amber-200 space-y-6">
+
+            <!-- 08:30 - 09:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">08:30 - 09:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 5-10 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 CONDOMINIUM BIN ➔ 沖繩兒童王國</div>
+                </div>
+                <a data-route data-origin="CONDOMINIUM BIN (コンドミニアム ビン)" data-dest="沖繩兒童王國" data-date="2026-11-16" data-time="08:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 09:00 - 12:00 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-amber-500 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-amber-50/90 to-orange-50/50 border border-amber-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-amber-500 text-white mb-1.5">09:00 - 12:00</span>
+                  <h3 class="text-base font-black text-slate-800">🏯 沖繩兒童王國</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12:00 - 12:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">12:00 - 12:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 30-40 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 沖繩兒童王國 ➔ PARCO CITY</div>
+                </div>
+                <a data-route data-origin="沖繩兒童王國" data-dest="PARCO CITY" data-date="2026-11-16" data-time="12:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 12:30 - 16:30 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-amber-500 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-amber-50/90 to-orange-50/50 border border-amber-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-amber-500 text-white mb-1.5">12:30 - 16:30</span>
+                  <h3 class="text-base font-black text-slate-800">🏯🥩 PARCO CITY (午餐自理)</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 16:30 - 17:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">16:30 - 17:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 15-20 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 PARCO CITY ➔ Buchi Kumojiten 炭火燒肉</div>
+                </div>
+                <a data-route data-origin="PARCO CITY" data-dest="Buchi Kumojiten" data-date="2026-11-16" data-time="16:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 17:00 - 19:00 (備註按鈕垂直置中) -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-amber-500 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-amber-50/90 to-orange-50/50 border border-amber-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-amber-500 text-white mb-1.5">17:00 - 19:00</span>
+                  <h3 class="text-base font-black text-slate-800">🥩 Buchi Kumojiten 炭火燒肉</h3>
+                </div>
+                <a data-link="bookingBuchi" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-rose-50 hover:bg-rose-600 text-rose-700 hover:text-white border border-rose-200 text-xs font-bold shadow-sm transition">
+                  📋 訂餐資訊
+                </a>
+              </div>
+            </div>
+
+            <!-- 19:00 - 20:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">19:00 - 20:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 40-60 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 Buchi Kumojiten ➔ CONDOMINIUM BIN</div>
+                </div>
+                <a data-route data-origin="Buchi Kumojiten" data-dest="CONDOMINIUM BIN (コンドミニアム ビン)" data-date="2026-11-16" data-time="19:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 20:00 - 20:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-white shadow"></div>
+              <div class="text-xs font-bold text-purple-600">20:00 - 20:30</div>
+              <div class="text-sm font-bold text-slate-800 mt-0.5">♨️ CONDOMINIUM BIN 入住</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== DAY 4 (11/17) 珊瑚粉 ==================== -->
+      <section id="day4" class="day-panel bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden">
+        <div class="bg-gradient-to-r from-rose-500 to-pink-500 px-5 py-3.5 text-white flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded-lg bg-white text-rose-700 font-black text-xs shadow-sm">DAY 4</span>
+            <h2 class="text-base font-bold">糸滿魚市場・波上宮・國際通・居酒屋</h2>
+          </div>
+          <span class="text-xs font-bold bg-white/20 px-2.5 py-1 rounded-full shrink-0">2026/11/17 (二)</span>
+        </div>
+
+        <div class="p-5 sm:p-6">
+          <div class="relative pl-6 border-l-2 border-rose-200 space-y-6">
+
+            <!-- 08:30 - 09:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">08:30 - 09:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 40-50 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 CONDOMINIUM BIN ➔ 糸滿魚市場</div>
+                </div>
+                <a data-route data-origin="CONDOMINIUM BIN (コンドミニアム ビン)" data-dest="糸滿魚市" data-date="2026-11-17" data-time="08:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 09:30 - 11:00 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-rose-500 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-rose-50/90 to-pink-50/50 border border-rose-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-rose-500 text-white mb-1.5">09:30 - 11:00</span>
+                  <h3 class="text-base font-black text-slate-800">🥩 糸滿魚市場</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 11:00 - 11:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">11:00 - 11:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 20-30 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 糸滿魚市場 ➔ 波上宮</div>
+                </div>
+                <a data-route data-origin="糸滿魚市" data-dest="波上宮" data-date="2026-11-17" data-time="11:00" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 11:30 - 12:30 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-rose-500 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-rose-50/90 to-pink-50/50 border border-rose-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-rose-500 text-white mb-1.5">11:30 - 12:30</span>
+                  <h3 class="text-base font-black text-slate-800">🏯 波上宮</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 12:30 - 13:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">12:30 - 13:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 10 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 波上宮 ➔ 國際通</div>
+                </div>
+                <a data-route data-origin="波上宮" data-dest="Kokusai-dori" data-date="2026-11-17" data-time="12:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 13:00 - 17:00 (備註按鈕垂直置中) -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-rose-500 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-rose-50/90 to-pink-50/50 border border-rose-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-rose-500 text-white mb-1.5">13:00 - 17:00</span>
+                  <h3 class="text-base font-black text-slate-800">🏯🥩 國際通 (午餐自理)</h3>
+                </div>
+                <a data-link="nearbyKokusai" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-300 text-xs font-bold shadow-sm transition">
+                  🌟 周遭景點
+                </a>
+              </div>
+            </div>
+
+            <!-- 17:00 - 20:30 (備註按鈕垂直置中) -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-rose-500 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-rose-50/90 to-pink-50/50 border border-rose-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-rose-500 text-white">17:00 - 20:30</span>
+                    <span class="text-xs text-rose-700 font-semibold"><i class="fa-solid fa-person-walking"></i> 走路 10 min</span>
+                  </div>
+                  <h3 class="text-base font-black text-slate-800">🚶🥩 島唄ライブ居酒屋 (Ryukyusakaba Ryusei)</h3>
+                </div>
+                <a data-route data-origin="Kokusai-dori" data-dest="Ryukyusakaba Ryusei" data-date="2026-11-17" data-time="17:00" data-mode="2" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold shadow-sm transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 20:30 - 21:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">20:30 - 21:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 30-40 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 島唄ライブ居酒屋 ➔ CONDOMINIUM BIN</div>
+                </div>
+                <a data-route data-origin="Ryukyusakaba Ryusei" data-dest="CONDOMINIUM BIN (コンドミニアム ビン)" data-date="2026-11-17" data-time="20:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 21:00 - 21:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-purple-500 border-4 border-white shadow"></div>
+              <div class="text-xs font-bold text-purple-600">21:00 - 21:30</div>
+              <div class="text-sm font-bold text-slate-800 mt-0.5">♨️ CONDOMINIUM BIN 入住</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================== DAY 5 (11/18) 星夜紫 ==================== -->
+      <section id="day5" class="day-panel bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden">
+        <div class="bg-gradient-to-r from-indigo-600 to-purple-600 px-5 py-3.5 text-white flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="px-2.5 py-1 rounded-lg bg-white text-indigo-700 font-black text-xs shadow-sm">DAY 5</span>
+            <h2 class="text-base font-bold">DMM水族館・iias豐崎・瀨長島・賦歸</h2>
+          </div>
+          <span class="text-xs font-bold bg-white/20 px-2.5 py-1 rounded-full shrink-0">2026/11/18 (三)</span>
+        </div>
+
+        <div class="p-5 sm:p-6">
+          <div class="relative pl-6 border-l-2 border-indigo-200 space-y-6">
+
+            <!-- 08:30 - 09:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">08:30 - 09:30</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 30-50 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 CONDOMINIUM BIN ➔ DMM Kariyushi水族館</div>
+                </div>
+                <a data-route data-origin="CONDOMINIUM BIN (コンドミニアム ビン)" data-dest="DMM Kariyushi水族館" data-date="2026-11-18" data-time="08:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 09:30 - 11:30 -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-indigo-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-indigo-50/90 to-purple-50/50 border border-indigo-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-600 text-white mb-1.5">09:30 - 11:30</span>
+                  <h3 class="text-base font-black text-slate-800">🏯 DMM Kariyushi水族館</h3>
+                </div>
+              </div>
+            </div>
+
+            <!-- 11:30 - 13:30 (備註按鈕垂直置中) -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-indigo-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-indigo-50/90 to-purple-50/50 border border-indigo-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <div class="flex items-center gap-2 mb-1.5">
+                    <span class="text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-600 text-white">11:30 - 13:30</span>
+                    <span class="text-xs text-indigo-700 font-semibold"><i class="fa-solid fa-person-walking"></i> 走路 10 min</span>
+                  </div>
+                  <h3 class="text-base font-black text-slate-800">🚶🏯 iias 沖繩豐崎</h3>
+                </div>
+                <a data-route data-origin="DMM Kariyushi水族館" data-dest="iias 沖繩豐崎" data-date="2026-11-18" data-time="11:30" data-mode="2" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold shadow-sm transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 13:30 - 14:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">13:30 - 14:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 15 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 iias 沖繩豐崎 ➔ 瀨長島</div>
+                </div>
+                <a data-route data-origin="iias 沖繩豐崎" data-dest="瀨長島" data-date="2026-11-18" data-time="13:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 14:00 - 15:30 (備註按鈕垂直置中) -->
+            <div class="relative">
+              <div class="absolute -left-[33px] top-1 w-5 h-5 rounded-full bg-indigo-600 border-4 border-white shadow-md"></div>
+              <div class="bg-gradient-to-br from-indigo-50/90 to-purple-50/50 border border-indigo-200/80 rounded-xl p-4 flex items-center justify-between gap-3">
+                <div>
+                  <span class="inline-block text-xs font-bold px-2.5 py-1 rounded-md bg-indigo-600 text-white mb-1.5">14:00 - 15:30</span>
+                  <h3 class="text-base font-black text-slate-800">🏯🥩 瀨長島 (午餐自理)</h3>
+                </div>
+                <a data-link="nearbySenagajima" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1 px-3 py-1.5 rounded-lg bg-amber-50 hover:bg-amber-500 text-amber-800 hover:text-white border border-amber-300 text-xs font-bold shadow-sm transition">
+                  🌟 周遭景點
+                </a>
+              </div>
+            </div>
+
+            <!-- 15:30 - 16:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">15:30 - 16:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-car-side"></i> 15 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚙 瀨長島 ➔ KS Rent A Car 赤嶺駅営業所</div>
+                </div>
+                <a data-route data-origin="瀨長島" data-dest="KS Rent A Car 赤嶺駅営業所" data-date="2026-11-18" data-time="15:30" data-mode="0" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+            <!-- 16:00 - 16:30 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-slate-300 border-4 border-white"></div>
+              <div class="text-xs font-bold text-slate-400">16:00 - 16:30</div>
+              <div class="text-sm font-bold text-slate-700 mt-0.5">🏯 KS Rent A Car 赤嶺駅営業所 還車</div>
+            </div>
+
+            <!-- 16:30 - 17:00 -->
+            <div class="relative">
+              <div class="absolute -left-[31px] top-1 w-4 h-4 rounded-full bg-blue-500 border-4 border-white shadow"></div>
+              <div class="flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-blue-700">16:30 - 17:00</span>
+                    <span class="text-xs text-slate-400"><i class="fa-solid fa-bus"></i> 15 min</span>
+                  </div>
+                  <div class="font-bold text-slate-800 mt-1">🚌 KS Rent A Car 赤嶺駅営業所 ➔ 那霸機場</div>
+                </div>
+                <a data-route data-origin="KS Rent A Car 赤嶺駅営業所" data-dest="那霸機場" data-date="2026-11-18" data-time="16:30" data-mode="3" target="_blank" rel="noopener"
+                   class="shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-600 text-sky-700 hover:text-white border border-sky-200 text-xs font-bold transition">
+                  <i class="fa-solid fa-location-arrow"></i> 路線圖
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- ================= 住宿分房配置區 (CONDOMINIUM BIN) ================= -->
+    <section id="room-section" class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-5 sm:p-6 scroll-mt-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-5">
+        <div>
+          <h2 class="text-lg font-black text-slate-800 flex items-center gap-2">
+            <span>♨️</span> CONDOMINIUM BIN 住宿分配表
+          </h2>
+        </div>
+        <a href="https://www.google.com/maps/search/?api=1&query=CONDOMINIUM%20BIN%20(%E3%82%B3%E3%83%B3%E3%83%89%E3%83%9F%E3%83%8B%E3%82%A2%E3%83%A0%20%E3%83%93%E3%83%B3)" target="_blank" rel="noopener"
+           class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-700 border border-sky-200 text-xs font-bold transition self-start">
+          <i class="fa-solid fa-location-dot text-rose-500"></i> Google Map
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        
+        <!-- 2nd Floor -->
+        <div class="rounded-xl border border-sky-200 bg-sky-50/40 p-4">
+          <div class="flex items-center justify-between border-b border-sky-200 pb-2.5 mb-3">
+            <h3 class="text-sm font-black text-sky-800 underline underline-offset-4">
+              2F 三房
+            </h3>
+            <span class="px-2 py-0.5 rounded bg-sky-600 text-white text-xs font-bold">2F</span>
+          </div>
+          <div class="space-y-2.5 text-sm">
+            <div class="bg-white p-3 rounded-lg border border-sky-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 1：2 張雙人床 🛏️🛏️</div>
+              <div class="font-bold text-orange-600">小姑姑、小姑丈、Dora</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-sky-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 2：2 張單人床 🛌🛌</div>
+              <div class="font-bold text-orange-600">阿嬤、大姑姑</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-sky-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 3：1 張單人床 🛌、2 張日式床舖 🛌🛌</div>
+              <div class="font-bold text-orange-600">若若一家</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3rd Floor -->
+        <div class="rounded-xl border border-teal-200 bg-teal-50/40 p-4">
+          <div class="flex items-center justify-between border-b border-teal-200 pb-2.5 mb-3">
+            <h3 class="text-sm font-black text-teal-800 underline underline-offset-4">
+              3F 三房
+            </h3>
+            <span class="px-2 py-0.5 rounded bg-teal-600 text-white text-xs font-bold">3F</span>
+          </div>
+          <div class="space-y-2.5 text-sm">
+            <div class="bg-white p-3 rounded-lg border border-teal-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 1：2 張雙人床 🛏️🛏️</div>
+              <div class="font-bold text-orange-600">芮芮一家</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-teal-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 2：2 張日式床舖 🛌🛌</div>
+              <div class="font-bold text-orange-600">育妍一家</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-teal-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 3：3 張單人床 🛌🛌🛌</div>
+              <div class="font-bold text-orange-600">育翔、凱平</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4th Floor -->
+        <div class="rounded-xl border border-indigo-200 bg-indigo-50/40 p-4">
+          <div class="flex items-center justify-between border-b border-indigo-200 pb-2.5 mb-3">
+            <h3 class="text-sm font-black text-indigo-800 underline underline-offset-4">
+              4F 三房
+            </h3>
+            <span class="px-2 py-0.5 rounded bg-indigo-600 text-white text-xs font-bold">4F</span>
+          </div>
+          <div class="space-y-2.5 text-sm">
+            <div class="bg-white p-3 rounded-lg border border-indigo-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 1：2 張雙人床 🛏️🛏️</div>
+              <div class="font-bold text-orange-600">育唯一家</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-indigo-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 2：2 張雙人床 🛏️🛏️</div>
+              <div class="font-bold text-orange-600">育丞、沁柔</div>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-indigo-100 shadow-sm">
+              <div class="text-xs text-slate-500 mb-0.5">臥室 3：2 張日式床舖 🛌🛌</div>
+              <div class="font-bold text-orange-600">育心、阿倫</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= 底部相關攻略資訊區 ================= -->
+    <section id="tips-section" class="bg-white rounded-2xl shadow-sm border border-slate-200/90 p-5 sm:p-6">
+      <h2 class="text-lg font-black text-slate-800 flex items-center gap-2 mb-4">
+        <span>📒</span> 相關攻略資訊備註
+      </h2>
+      <div id="notes-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4"></div>
+    </section>
+
+  </main>
+
+  <!-- ================= 集中管理設定區 (全站唯一修改網址與攻略的地方！) ================= -->
+  <script>
+    /**
+     * 🔧 1. 連結集中管理區 (全站唯一來源，改這裡就會自動套用到對應按鈕！)
+     */
+    const LINKS_CONFIG = {
+      // 頂部：租車憑證 (8人座車x4)
+      rentalVoucher: "https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgBMZgl5WFqPQ6HPqFJBFnaAARIxrmqN8CASP0D_PrFQ3XQ?e=7sNWfM",
+      
+      // 頂部：全島攻略地圖
+      islandMap: "https://maps.app.goo.gl/skY7Nm5dNp28eCVR7",
+      
+      // 頂部：航班資訊
+      flightInfo: "https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgAOhknfPu3zRY8MP_AEDnY8AYR0qWBxvby35wdlzx7P2lI?e=xvfTvT",
+
+      // 景點：🌟周遭景點 (美國村、國際通、瀨長島)
+      nearbyAmericanVillage: "https://maps.app.goo.gl/HqKgrDpVFo7cpHoZ6",
+      nearbyKokusai: "https://maps.app.goo.gl/pXjuxnEt2RqWAeU36",
+      nearbySenagajima: "https://maps.app.goo.gl/NhbDta1HKRWEAbyz9",
+
+      // 餐廳：📋訂餐資訊 (百年古家 大家、Buchi 炭火燒肉)
+      bookingUfuya: "https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgDhdbVhnSQXSr2zoryQm1wrAY1K2mBLCykIGvOHuyQ5UvU?e=JqDmY7",
+      bookingBuchi: "https://pufsecurity-my.sharepoint.com/:f:/p/kevinw/IgDAP7gR504uRbZVa6RNlZGSAZONAy91RCv6BaEBwEidL1Y?e=peI8Y4"
+    };
+
+    /**
+     * 📝 2. 相關攻略資訊備註清單 (可隨時往下新增)
+     */
+    const CUSTOM_NOTES = [
+      {
+        title: "🌤️ 沖繩中央氣象廳預報",
+        items: [
+          "出發前與每日出門前，可隨時查看日本氣象廳最新天氣與降雨機率：",
+          { label: "📌 查看沖繩本島天氣預報 (JMA)", url: "https://www.data.jma.go.jp/multi/yoho/yoho_detail.html?code=471020&lang=cn_zt" }
+        ]
+      },
+      {
+        title: "🛍️ 退稅新制注意事項",
+        items: [
+          "日本最新退稅規定、流程與注意事項懶人包：",
+          { label: "📌 2026 日本退稅新制完整指南", url: "https://qmonster.cc/japan-tax-refund-guide-2026/" }
+        ]
+      },
+      {
+        title: "🏯 熱門景點攻略",
+        items: [
+          { label: "📌 國際通攻略", url: "https://bobbytravel.tw/kokusai-street/" },
+          { label: "📌 美國村攻略", url: "https://bobbytravel.tw/american-village/" },
+          { label: "📌 瀨長島攻略", url: "https://bobbytravel.tw/senaga-island/" }
+        ]
+      }
+    ];
+
+    /**
+     * 🕒 3. 自動產生帶有「該天 (11/14-11/18)、該出發時段」的 Google Maps 路線網址
+     */
+    function initTimedRoutes() {
+      document.querySelectorAll('a[data-route]').forEach(el => {
+        const origin = encodeURIComponent(el.dataset.origin);
+        const dest = encodeURIComponent(el.dataset.dest);
+        const [year, month, day] = el.dataset.date.split('-').map(Number);
+        const [hour, minute] = el.dataset.time.split(':').map(Number);
+        const mode = el.dataset.mode || '0'; // 0: 開車, 2: 走路, 3: 大眾運輸
+
+        const timestamp = Math.floor(Date.UTC(year, month - 1, day, hour, minute, 0) / 1000);
+        el.href = `https://www.google.com/maps/dir/${origin}/${dest}/data=!4m8!4m7!1m0!1m0!2m3!6e0!7e2!8j${timestamp}!3e${mode}`;
+        el.title = `已設定出發時間：${el.dataset.date} ${el.dataset.time}`;
+      });
+    }
+
+    function applyLinks() {
+      document.querySelectorAll('a[data-link]').forEach(el => {
+        const key = el.dataset.link;
+        if (LINKS_CONFIG[key]) {
+          el.href = LINKS_CONFIG[key];
+        }
+      });
+    }
+
+    function renderNotes() {
+      const grid = document.getElementById('notes-grid');
+      grid.innerHTML = CUSTOM_NOTES.map(note => `
+        <div class="rounded-xl border border-slate-200 bg-slate-50/70 p-4 flex flex-col justify-between">
+          <div>
+            <h3 class="font-bold text-sm text-slate-800 mb-2.5">${note.title}</h3>
+            <ul class="space-y-2 text-xs text-slate-600 leading-relaxed">
+              ${note.items.map(item => {
+                if (typeof item === 'string') {
+                  return `<li class="flex items-start gap-1.5"><span class="text-slate-400">•</span><span>${item}</span></li>`;
+                }
+                return `
+                  <li>
+                    <a href="${item.url}" target="_blank" rel="noopener"
+                       class="inline-flex items-center justify-between w-full px-3 py-2 rounded-lg bg-white hover:bg-sky-50 text-sky-700 border border-slate-200 hover:border-sky-300 font-bold shadow-sm transition">
+                      <span>${item.label}</span>
+                      <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                    </a>
+                  </li>
+                `;
+              }).join('')}
+            </ul>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterDay(dayId) {
+      const container = document.getElementById('itinerary-container');
+      container.className = (dayId === 'all')
+        ? 'grid grid-cols-1 lg:grid-cols-2 gap-6 items-start'
+        : 'max-w-2xl mx-auto space-y-6';
+
+      document.querySelectorAll('.day-panel').forEach(panel => {
+        panel.style.display = (dayId === 'all' || panel.id === dayId) ? 'block' : 'none';
+      });
+      document.querySelectorAll('.tab-btn').forEach(tab => {
+        tab.className = (tab.dataset.tab === dayId)
+          ? 'tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-sky-600 text-white shadow-sm transition'
+          : 'tab-btn px-3.5 py-1.5 rounded-xl text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition';
+      });
+    }
+
+    initTimedRoutes();
+    applyLinks();
+    renderNotes();
+  </script>
+</body>
+</html>

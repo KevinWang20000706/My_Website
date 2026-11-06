@@ -654,30 +654,37 @@
   <!-- 互動式 Checklist 腳本 -->
   <script>
     const STORAGE_KEY = 'tpe_grand_trail_3_4_checklist';
-    const checkboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
+    
+    // 1. 全部勾選框（用於事件監聽與 LocalStorage 存取）
+    const allCheckboxes = document.querySelectorAll('.checkbox-item input[type="checkbox"]');
+    
+    // 2. 僅抓取「核心必備裝備」容器內的勾選框（用於進度計算）
+    const essentialCheckboxes = document.querySelectorAll('#essential-list input[type="checkbox"]');
+    
     const progressBar = document.getElementById('progress-bar');
     const progressText = document.getElementById('progress-text');
-
+  
     function updateProgress() {
-      const total = checkboxes.length;
-      const checked = Array.from(checkboxes).filter(cb => cb.checked).length;
-      const percent = Math.round((checked / total) * 100);
+      // 只拿 essentialCheckboxes 來算進度
+      const total = essentialCheckboxes.length; // 固定為 8
+      const checked = Array.from(essentialCheckboxes).filter(cb => cb.checked).length;
+      const percent = total === 0 ? 0 : Math.round((checked / total) * 100);
       
-      progressBar.style.width = `${percent}%`;
-      progressText.textContent = `${checked} / ${total} 已準備 (${percent}%)`;
-
-      // 儲存狀態到 LocalStorage
+      if (progressBar) progressBar.style.width = `${percent}%`;
+      if (progressText) progressText.textContent = `必備裝備：${checked} / ${total} (${percent}%)`;
+  
+      // 儲存狀態仍維持所有項目（可選項目的打勾依然會被瀏覽器記住）
       const state = {};
-      checkboxes.forEach(cb => {
+      allCheckboxes.forEach(cb => {
         state[cb.dataset.id] = cb.checked;
       });
       localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
     }
-
+  
     function loadProgress() {
       try {
         const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-        checkboxes.forEach(cb => {
+        allCheckboxes.forEach(cb => {
           if (saved[cb.dataset.id]) {
             cb.checked = true;
           }
@@ -688,14 +695,14 @@
         console.error(e);
       }
     }
-
+  
     function resetChecklist() {
       if (confirm('確定要清空所有打勾紀錄嗎？')) {
-        checkboxes.forEach(cb => cb.checked = false);
+        allCheckboxes.forEach(cb => cb.checked = false);
         updateProgress();
       }
     }
-
+  
     loadProgress();
   </script>
 </body>

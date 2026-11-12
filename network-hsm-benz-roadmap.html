@@ -1,0 +1,1248 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PUF-based Network HSM (Benz) 產品研發進度 | Project Roadmap</title>
+  <style>
+    :root {
+      --bg-primary: #0b0f19;
+      --bg-card: #111827;
+      --bg-card-elevated: rgba(30, 41, 59, 0.78);
+      --border-subtle: rgba(148, 163, 184, 0.16);
+      --grid-line: rgba(148, 163, 184, 0.16);
+      --text-main: #f8fafc;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
+
+      /*
+       * 關鍵尺寸設定：
+       * 每個半月格 = 22px，1 個月 (2半格) 總寬 = 44px
+       * 膠囊高度固定為 36px，單月區塊 .is-circle 鎖定 36px × 36px 100% 正圓形
+       */
+      --label-col-width: 185px;
+      --half-month-width: 22px;
+      --month-width: 44px;
+      --pill-height: 36px;
+
+      /* 2026 / 2027 / 2028 年度代表色 */
+      --year-2026: #fbbf24; /* 2026 琥珀金 */
+      --year-2027: #34d399; /* 2027 翡翠綠 */
+      --year-2028: #38bdf8; /* 2028 電光藍 */
+
+      /* 四大軌道色系 */
+      --track-blue: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+      --track-blue-glow: rgba(14, 165, 233, 0.38);
+
+      --track-purple: linear-gradient(135deg, #a855f7 0%, #6366f1 100%);
+      --track-purple-glow: rgba(168, 85, 247, 0.38);
+
+      --track-emerald: linear-gradient(135deg, #10b981 0%, #0d9488 100%);
+      --track-emerald-glow: rgba(16, 185, 129, 0.38);
+
+      --track-amber: linear-gradient(135deg, #f59e0b 0%, #ea580c 100%);
+      --track-amber-glow: rgba(245, 158, 11, 0.38);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft JhengHei", sans-serif;
+      background: radial-gradient(circle at 20% 0%, #172554 0%, var(--bg-primary) 55%);
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 32px 24px 60px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1260px;
+    }
+
+    /* 頁首區域 */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .header-title h1 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg, #ffffff, #94a3b8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .legend {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid var(--border-subtle);
+      padding: 9px 16px;
+      border-radius: 999px;
+      backdrop-filter: blur(8px);
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .legend-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    /* 主時程圖卡片 */
+    .roadmap-card {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 26px 28px 22px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(12px);
+      overflow-x: auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .roadmap-inner {
+      width: max-content;
+      position: relative;
+    }
+
+    /* 21 個月，每個月固定 44px 寬 */
+    .timeline-grid-wrapper {
+      position: relative;
+      display: grid;
+      grid-template-columns: var(--label-col-width) repeat(21, var(--month-width));
+      row-gap: 18px;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      align-items: stretch;
+    }
+
+    /* 背景垂直虛線網格：第一條線即為左側標題與時間軸的分界線，不再重複畫 border-right 避免雙線跑掉 */
+    .grid-lines-overlay {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: var(--label-col-width);
+      right: 0;
+      display: grid;
+      grid-template-columns: repeat(21, var(--month-width));
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .grid-col-line {
+      position: relative;
+      height: 100%;
+      border-right: 1px dashed var(--grid-line);
+    }
+
+    .grid-col-line:first-child {
+      border-left: 1px dashed var(--grid-line);
+    }
+
+    /* 左側軌道名稱：移除原本會跟虛線打架的短截 border-right */
+    .track-label {
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-right: 18px;
+      height: var(--pill-height);
+    }
+
+    .track-label .track-name {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-main);
+      white-space: nowrap;
+    }
+
+    .track-label .track-sub {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+      white-space: nowrap;
+    }
+
+    /* 軌道列容器：42 個半月格 (每格 22px)，列高嚴格鎖定為 --pill-height (36px) */
+    .track-row {
+      grid-column: 2 / -1;
+      display: grid;
+      grid-template-columns: repeat(42, var(--half-month-width));
+      grid-auto-rows: var(--pill-height);
+      align-items: center;
+      height: var(--pill-height);
+      position: relative;
+      z-index: 2;
+    }
+
+    /* 膠囊 Stage 樣式：嚴格固定高度 = 36px */
+    .stage-pill {
+      height: var(--pill-height) !important;
+      max-height: var(--pill-height) !important;
+      border-radius: 999px;
+      margin: 0 2px;
+      padding: 0 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      color: #ffffff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      position: relative;
+      transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.2s ease,
+                  filter 0.2s ease,
+                  opacity 0.2s ease;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      user-select: none;
+    }
+
+    /* 1 個月跨度的圓形專用樣式：強制 36px × 36px 正圓形 */
+    .stage-pill.is-circle {
+      width: var(--pill-height) !important;
+      height: var(--pill-height) !important;
+      aspect-ratio: 1 / 1;
+      padding: 0;
+      margin: 0 auto;
+      border-radius: 50%;
+      justify-self: center;
+    }
+
+    .stage-pill span {
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+      display: inline-block;
+      line-height: 1;
+    }
+
+    /* 四種顏色主題 */
+    .stage-pill.theme-blue {
+      background: var(--track-blue);
+      box-shadow: 0 4px 14px -3px var(--track-blue-glow);
+    }
+
+    .stage-pill.theme-purple {
+      background: var(--track-purple);
+      box-shadow: 0 4px 14px -3px var(--track-purple-glow);
+    }
+
+    .stage-pill.theme-emerald {
+      background: var(--track-emerald);
+      box-shadow: 0 4px 14px -3px var(--track-emerald-glow);
+    }
+
+    .stage-pill.theme-amber {
+      background: var(--track-amber);
+      box-shadow: 0 4px 14px -3px var(--track-amber-glow);
+    }
+
+    /* Hover 與選中互動效果 */
+    .timeline-grid-wrapper.has-hover .stage-pill:not(.active) {
+      opacity: 0.38;
+      filter: saturate(0.65);
+    }
+
+    .stage-pill:hover,
+    .stage-pill.active {
+      transform: translateY(-2px) scale(1.06);
+      filter: brightness(1.14);
+      border-color: rgba(255, 255, 255, 0.9);
+      z-index: 5;
+    }
+
+    .stage-pill.theme-blue:hover,
+    .stage-pill.theme-blue.active {
+      box-shadow: 0 8px 22px -2px rgba(14, 165, 233, 0.75);
+    }
+
+    .stage-pill.theme-purple:hover,
+    .stage-pill.theme-purple.active {
+      box-shadow: 0 8px 22px -2px rgba(168, 85, 247, 0.75);
+    }
+
+    .stage-pill.theme-emerald:hover,
+    .stage-pill.theme-emerald.active {
+      box-shadow: 0 8px 22px -2px rgba(16, 185, 129, 0.75);
+    }
+
+    .stage-pill.theme-amber:hover,
+    .stage-pill.theme-amber.active {
+      box-shadow: 0 8px 22px -2px rgba(245, 158, 11, 0.75);
+    }
+
+    /* 底部時間軸整條貫穿的青色橫線容器（完全對齊不跳位） */
+    .axis-divider {
+      grid-column: 1 / -1;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(20, 184, 166, 0.25) 0%, #14b8a6 16%, #14b8a6 100%);
+      margin-top: 2px;
+      margin-bottom: -8px;
+      z-index: 3;
+    }
+
+    /* 時間軸底部月份列 */
+    .months-axis-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--text-secondary);
+      letter-spacing: 0.04em;
+      padding-right: 18px;
+      z-index: 2;
+    }
+
+    .year-color-dots {
+      display: flex;
+      gap: 8px;
+      font-size: 0.7rem;
+    }
+
+    .year-color-dots span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .months-axis {
+      grid-column: 2 / -1;
+      display: grid;
+      grid-template-columns: repeat(21, var(--month-width));
+      position: relative;
+      z-index: 2;
+    }
+
+    .month-cell {
+      text-align: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      padding: 4px 0;
+      border-radius: 6px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    /* 2026 / 2027 / 2028 月份顏色區分 */
+    .month-cell.year-2026 {
+      color: var(--year-2026);
+    }
+
+    .month-cell.year-2027 {
+      color: var(--year-2027);
+    }
+
+    .month-cell.year-2028 {
+      color: var(--year-2028);
+    }
+
+    .month-cell.highlight {
+      background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
+    }
+
+    /* 季度 (Quarter) 分類列：7 個季度 (每季 3 個月) */
+    .quarters-axis-label {
+      display: flex;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding-right: 18px;
+      margin-top: -6px;
+      z-index: 2;
+    }
+
+    .quarters-row {
+      grid-column: 2 / -1;
+      display: grid;
+      grid-template-columns: repeat(7, calc(var(--month-width) * 3));
+      margin-top: -6px;
+      z-index: 2;
+    }
+
+    .quarter-tag {
+      margin: 0 3px;
+      padding: 5px 6px;
+      border-radius: 7px;
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      transition: transform 0.2s ease, filter 0.2s ease;
+    }
+
+    .quarter-tag.q-2026 {
+      background: rgba(251, 191, 36, 0.11);
+      color: var(--year-2026);
+      border: 1px solid rgba(251, 191, 36, 0.28);
+    }
+
+    .quarter-tag.q-2027 {
+      background: rgba(52, 211, 153, 0.11);
+      color: var(--year-2027);
+      border: 1px solid rgba(52, 211, 153, 0.28);
+    }
+
+    .quarter-tag.q-2028 {
+      background: rgba(56, 189, 248, 0.11);
+      color: var(--year-2028);
+      border: 1px solid rgba(56, 189, 248, 0.28);
+    }
+
+    /* 下方 Stage 詳細資訊顯示面板 */
+    .detail-panel {
+      margin-top: 20px;
+      background: var(--bg-card-elevated);
+      border: 1px solid var(--border-subtle);
+      border-radius: 18px;
+      padding: 22px 26px;
+      min-height: 158px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(14px);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.45);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .detail-panel::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 5px;
+      background: var(--panel-accent, #38bdf8);
+      transition: background 0.3s ease;
+    }
+
+    .detail-content {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: start;
+      animation: fadeIn 0.2s ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .detail-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 8px;
+    }
+
+    .detail-badge {
+      font-size: 0.76rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 999px;
+      letter-spacing: 0.03em;
+    }
+
+    .detail-period {
+      font-size: 0.82rem;
+      color: var(--text-secondary);
+      background: rgba(15, 23, 42, 0.65);
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      font-weight: 500;
+    }
+
+    .detail-title {
+      font-size: 1.24rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .detail-desc {
+      color: #cbd5e1;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+
+    .detail-deliverables {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .deliverable-tag {
+      font-size: 0.78rem;
+      color: #e2e8f0;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 4px 11px;
+      border-radius: 8px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .deliverable-tag::before {
+      content: "✓";
+      font-weight: 700;
+      color: var(--panel-accent, #38bdf8);
+    }
+
+    .detail-meta-box {
+      background: rgba(15, 23, 42, 0.65);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 14px 18px;
+      min-width: 260px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .meta-item {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .meta-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 2px;
+    }
+
+    .meta-value {
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-main);
+      line-height: 1.4;
+    }
+
+    /* 下方完整階段總覽清單 */
+    .overview-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .track-summary-card {
+      background: rgba(17, 24, 39, 0.75);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 16px 20px;
+      backdrop-filter: blur(10px);
+    }
+
+    .track-summary-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .stage-list {
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .stage-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 10px;
+      border-radius: 8px;
+      font-size: 0.83rem;
+      cursor: pointer;
+      transition: background 0.18s ease, transform 0.18s ease;
+    }
+
+    .stage-list-item:hover,
+    .stage-list-item.active {
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateX(3px);
+    }
+
+    .stage-list-item .s-title {
+      color: #e2e8f0;
+      font-weight: 500;
+    }
+
+    .stage-list-item .s-owner {
+      color: var(--text-secondary);
+      font-size: 0.75rem;
+      background: rgba(15, 23, 42, 0.7);
+      padding: 2px 8px;
+      border-radius: 6px;
+      border: 1px solid var(--border-subtle);
+      white-space: nowrap;
+    }
+
+    @media (max-width: 960px) {
+      .roadmap-card {
+        justify-content: flex-start;
+      }
+      .detail-content {
+        grid-template-columns: 1fr;
+      }
+      .overview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- 頂部標題與圖例 -->
+    <header class="header">
+      <div class="header-title">
+        <h1>PUF-based Network HSM (Benz) 產品研發進度</h1>
+      </div>
+      <div class="legend">
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #0ea5e9;"></span>A · 軟韌體開發
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #a855f7;"></span>B · 硬體平台開發
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #10b981;"></span>C · FIPS 140-3 L3 認證
+        </div>
+        <div class="legend-item">
+          <span class="legend-dot" style="background: #f59e0b;"></span>D · 合作夥伴/場域驗證
+        </div>
+      </div>
+    </header>
+
+    <!-- 時程圖主體 -->
+    <div class="roadmap-card">
+      <div class="roadmap-inner">
+        <div class="timeline-grid-wrapper" id="timelineWrapper">
+          <!-- 背景 21 格垂直虛線 -->
+          <div class="grid-lines-overlay" id="gridLinesOverlay"></div>
+
+          <!-- 第一列：A · 軟韌體開發 -->
+          <div class="track-label">
+            <span class="track-name">A · 軟韌體開發</span>
+            <span class="track-sub">SW / FW Development</span>
+          </div>
+          <div class="track-row">
+            <div class="stage-pill theme-blue" style="grid-column: 3 / 12;" data-stage-id="A1">
+              <span>A1</span>
+            </div>
+            <div class="stage-pill theme-blue" style="grid-column: 12 / 20;" data-stage-id="A2">
+              <span>A2</span>
+            </div>
+            <div class="stage-pill theme-blue" style="grid-column: 20 / 31;" data-stage-id="A3">
+              <span>A3</span>
+            </div>
+          </div>
+
+          <!-- 第二列：B · 硬體平台開發 -->
+          <div class="track-label">
+            <span class="track-name">B · 硬體平台開發</span>
+            <span class="track-sub">HW Platform Dev</span>
+          </div>
+          <div class="track-row">
+            <div class="stage-pill theme-purple" style="grid-column: 10 / 17;" data-stage-id="B1">
+              <span>B1</span>
+            </div>
+            <div class="stage-pill theme-purple" style="grid-column: 17 / 20;" data-stage-id="B2">
+              <span>B2</span>
+            </div>
+            <div class="stage-pill theme-purple" style="grid-column: 20 / 23;" data-stage-id="B3">
+              <span>B3</span>
+            </div>
+            <div class="stage-pill theme-purple" style="grid-column: 23 / 26;" data-stage-id="B4">
+              <span>B4</span>
+            </div>
+          </div>
+
+          <!-- 第三列：C · FIPS 140-3 L3 -->
+          <div class="track-label">
+            <span class="track-name">C · FIPS 140-3 L3</span>
+            <span class="track-sub">Security Certification</span>
+          </div>
+          <div class="track-row">
+            <div class="stage-pill theme-emerald" style="grid-column: 3 / 7;" data-stage-id="C1">
+              <span>C1</span>
+            </div>
+            <div class="stage-pill theme-emerald is-circle" style="grid-column: 8 / 10;" data-stage-id="C2">
+              <span>C2</span>
+            </div>
+            <div class="stage-pill theme-emerald is-circle" style="grid-column: 10 / 12;" data-stage-id="C3">
+              <span>C3</span>
+            </div>
+            <div class="stage-pill theme-emerald is-circle" style="grid-column: 12 / 14;" data-stage-id="C4">
+              <span>C4</span>
+            </div>
+            <div class="stage-pill theme-emerald" style="grid-column: 14 / 21;" data-stage-id="C5">
+              <span>C5</span>
+            </div>
+            <div class="stage-pill theme-emerald" style="grid-column: 23 / 31;" data-stage-id="C6">
+              <span>C6</span>
+            </div>
+            <div class="stage-pill theme-emerald" style="grid-column: 31 / 43;" data-stage-id="C7">
+              <span>C7</span>
+            </div>
+          </div>
+
+          <!-- 第四列：D · 合作夥伴/場域驗證 -->
+          <div class="track-label">
+            <span class="track-name">D · 合作夥伴/場域驗證</span>
+            <span class="track-sub">Partner & Field Trial</span>
+          </div>
+          <div class="track-row">
+            <div class="stage-pill theme-amber is-circle" style="grid-column: 23 / 25;" data-stage-id="D1">
+              <span>D1</span>
+            </div>
+            <div class="stage-pill theme-amber" style="grid-column: 25 / 31;" data-stage-id="D2">
+              <span>D2</span>
+            </div>
+          </div>
+
+          <!-- 整條貫穿的青色分隔線（不再發生左右高度落差） -->
+          <div class="axis-divider"></div>
+
+          <!-- 底部月份座標軸 (2026: 07~12 | 2027: 01~12 | 2028: 01~03) -->
+          <div class="months-axis-label">
+            <span>MONTH</span>
+            <div class="year-color-dots">
+              <span style="color: var(--year-2026);">●26</span>
+              <span style="color: var(--year-2027);">●27</span>
+              <span style="color: var(--year-2028);">●28</span>
+            </div>
+          </div>
+          <div class="months-axis" id="monthsAxis"></div>
+
+          <!-- 季度 (Quarter) 分類標示：2026 Q3 ~ 2028 Q1 -->
+          <div class="quarters-axis-label">QUARTER</div>
+          <div class="quarters-row">
+            <div class="quarter-tag q-2026">2026 Q3</div>
+            <div class="quarter-tag q-2026">2026 Q4</div>
+            <div class="quarter-tag q-2027">2027 Q1</div>
+            <div class="quarter-tag q-2027">2027 Q2</div>
+            <div class="quarter-tag q-2027">2027 Q3</div>
+            <div class="quarter-tag q-2027">2027 Q4</div>
+            <div class="quarter-tag q-2028">2028 Q1</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 下方即時說明面板 -->
+    <section class="detail-panel" id="detailPanel">
+      <div class="detail-content" id="detailContent">
+        <div>
+          <div class="detail-header">
+            <span class="detail-badge" id="detailBadge">A · 軟韌體開發</span>
+            <span class="detail-period" id="detailPeriod">時程區間：2026/08 – 2026/11 (2026 Q3–Q4)</span>
+          </div>
+          <h2 class="detail-title" id="detailTitle">A1：AI Factory 系統架構與需求規格書撰寫</h2>
+          <p class="detail-desc" id="detailDesc">定義 AI Factory 整體安全架構、功能規格與軟韌體介面標準，完成系統需求規格文件（SRS）撰寫與內部審核。</p>
+          <div class="detail-deliverables" id="detailDeliverables"></div>
+        </div>
+
+        <div class="detail-meta-box">
+          <div class="meta-item">
+            <span class="meta-label">負責單位 / 合作夥伴</span>
+            <span class="meta-value" id="detailOwner">PUFsecurity</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">預計歷時</span>
+            <span class="meta-value" id="detailDuration">約 4 個月</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">階段重點屬性</span>
+            <span class="meta-value" id="detailStatus">規格定義</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 四大軌道全階段對照總覽 -->
+    <div class="overview-grid">
+      <div class="track-summary-card">
+        <div class="track-summary-header" style="color: #38bdf8;">
+          <span class="legend-dot" style="background: #0ea5e9;"></span>
+          Track A（軟韌體開發｜SW / FW Development）
+        </div>
+        <div class="stage-list">
+          <div class="stage-list-item" data-stage-link="A1">
+            <span class="s-title"><b>A1</b>：AI Factory 系統架構與需求規格書撰寫</span>
+            <span class="s-owner">PUFsecurity</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="A2">
+            <span class="s-title"><b>A2</b>：軟韌體核心開發與驗證（純軟體模擬環境）</span>
+            <span class="s-owner">PUFsecurity / SecuX</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="A3">
+            <span class="s-title"><b>A3</b>：軟韌體調校修正與驗證（硬體平台整合測試）</span>
+            <span class="s-owner">PUFsecurity / SecuX</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-summary-card">
+        <div class="track-summary-header" style="color: #c084fc;">
+          <span class="legend-dot" style="background: #a855f7;"></span>
+          Track B（硬體平台開發｜HW Platform Dev）
+        </div>
+        <div class="stage-list">
+          <div class="stage-list-item" data-stage-link="B1">
+            <span class="s-title"><b>B1</b>：硬體電路設計與 PCB Layout（含 Pre-assessment 後修正）</span>
+            <span class="s-owner">PUFsecurity / Hawkeye</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="B2">
+            <span class="s-title"><b>B2</b>：PCB 電路洗版與工程樣品打樣試產 (PCBA)</span>
+            <span class="s-owner">Hawkeye</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="B3">
+            <span class="s-title"><b>B3</b>：底層驅動程式 (Driver) 與板級支援套件 (BSP) 開發</span>
+            <span class="s-owner">Hawkeye</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="B4">
+            <span class="s-title"><b>B4</b>：硬體平台整合測試與可靠度驗證</span>
+            <span class="s-owner">Hawkeye</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-summary-card">
+        <div class="track-summary-header" style="color: #34d399;">
+          <span class="legend-dot" style="background: #10b981;"></span>
+          Track C（FIPS 140-3 L3 認證｜Security Certification）
+        </div>
+        <div class="stage-list">
+          <div class="stage-list-item" data-stage-link="C1">
+            <span class="s-title"><b>C1</b>：安規認證實驗室評估與專案簽約</span>
+            <span class="s-owner">PUFsecurity / SecuX / DEKRA</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="C2">
+            <span class="s-title"><b>C2</b>：認證專案 Kick-off 會議（時程規劃與 Pre-assessment 文件說明）</span>
+            <span class="s-owner">PUFsecurity / SecuX / DEKRA</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="C3">
+            <span class="s-title"><b>C3</b>：FIPS 140-3 Pre-assessment 預審技術文件撰寫</span>
+            <span class="s-owner">PUFsecurity / DEKRA</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="C4">
+            <span class="s-title"><b>C4</b>：安規實驗室 Pre-assessment Report（預審評估報告）產出</span>
+            <span class="s-owner">PUFsecurity / DEKRA</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="C5">
+            <span class="s-title"><b>C5</b>：CAVP 密碼演算法模擬測試完成 & ESV 熵源驗證取證</span>
+            <span class="s-owner">PUFsecurity / DEKRA</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="C6">
+            <span class="s-title"><b>C6</b>：CMVP 密碼模組驗證計畫正式送審文件撰寫</span>
+            <span class="s-owner">PUFsecurity / DEKRA</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="C7">
+            <span class="s-title"><b>C7</b>：CMVP 實驗室正式送測 & CAVP 實體平台正式取證</span>
+            <span class="s-owner">PUFsecurity / DEKRA</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="track-summary-card">
+        <div class="track-summary-header" style="color: #fbbf24;">
+          <span class="legend-dot" style="background: #f59e0b;"></span>
+          Track D（合作夥伴/場域驗證｜Partner & Field Trial）
+        </div>
+        <div class="stage-list">
+          <div class="stage-list-item" data-stage-link="D1">
+            <span class="s-title"><b>D1</b>：驗證樣機準備與寄送交付（預計 10～16 台）</span>
+            <span class="s-owner">STE / Webcomm / Jrsys / Changing / 中華電信</span>
+          </div>
+          <div class="stage-list-item" data-stage-link="D2">
+            <span class="s-title"><b>D2</b>：合作夥伴上層應用系統串接與實際場域整合驗證</span>
+            <span class="s-owner">STE / Webcomm / Jrsys / Changing / 中華電信</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 月份座標資料：以 2026 (07~12)、2027 (01~12)、2028 (01~03) 三種顏色區分
+    const monthsData = [
+      { label: '07', year: '2026' },
+      { label: '08', year: '2026' },
+      { label: '09', year: '2026' },
+      { label: '10', year: '2026' },
+      { label: '11', year: '2026' },
+      { label: '12', year: '2026' },
+      { label: '01', year: '2027' },
+      { label: '02', year: '2027' },
+      { label: '03', year: '2027' },
+      { label: '04', year: '2027' },
+      { label: '05', year: '2027' },
+      { label: '06', year: '2027' },
+      { label: '07', year: '2027' },
+      { label: '08', year: '2027' },
+      { label: '09', year: '2027' },
+      { label: '10', year: '2027' },
+      { label: '11', year: '2027' },
+      { label: '12', year: '2027' },
+      { label: '01', year: '2028' },
+      { label: '02', year: '2028' },
+      { label: '03', year: '2028' }
+    ];
+
+    // 各 Stage 詳細說明資料庫（時程區間同步更新為 2026~2028 與對應 Q 季度）
+    const stageDetails = {
+      A1: {
+        track: 'A · 軟韌體開發（SW / FW Development）',
+        title: 'A1：AI Factory 系統架構與需求規格書撰寫',
+        period: '2026/08 – 2026/11 (2026 Q3–Q4)',
+        duration: '約 4 個月',
+        owner: 'PUFsecurity',
+        status: '規格定義',
+        accent: '#38bdf8',
+        badgeBg: 'rgba(14, 165, 233, 0.18)',
+        monthCols: [1, 2, 3, 4],
+        desc: '定義 AI Factory 整體安全架構、功能規格與軟韌體介面標準，完成系統需求規格文件（SRS）撰寫與內部審核。',
+        deliverables: ['AI Factory 需求規格書 (SRS)', '安全架構與 API 介面定義', '軟韌體開發藍圖']
+      },
+      A2: {
+        track: 'A · 軟韌體開發（SW / FW Development）',
+        title: 'A2：軟韌體核心開發與驗證（純軟體模擬環境）',
+        period: '2026/12 – 2027/03 (2026 Q4–2027 Q1)',
+        duration: '約 4 個月',
+        owner: 'PUFsecurity / SecuX',
+        status: '軟體模擬開發',
+        accent: '#38bdf8',
+        badgeBg: 'rgba(14, 165, 233, 0.18)',
+        monthCols: [5, 6, 7, 8],
+        desc: '於純軟體模擬環境中進行核心密碼模組、韌體邏輯與安全機制開發，並完成初步功能測試與演算法行為驗證。',
+        deliverables: ['軟韌體核心模組初版', '純軟體模擬器驗證環境', '單元與功能測試報告']
+      },
+      A3: {
+        track: 'A · 軟韌體開發（SW / FW Development）',
+        title: 'A3：軟韌體調校修正與驗證（硬體平台整合測試）',
+        period: '2027/04 – 2027/09 (2027 Q2–Q3)',
+        duration: '約 5.5 個月',
+        owner: 'PUFsecurity / SecuX',
+        status: '軟硬體整合',
+        accent: '#38bdf8',
+        badgeBg: 'rgba(14, 165, 233, 0.18)',
+        monthCols: [9, 10, 11, 12, 13, 14],
+        desc: '將軟韌體正式移植至實體硬體平台，針對硬體特性與安規要求進行問題除錯、效能最佳化與完整軟硬體整合驗證。',
+        deliverables: ['正式版軟韌體映像檔 (GA)', '硬體平台整合測試報告', 'FIPS 合規性韌體修正']
+      },
+      B1: {
+        track: 'B · 硬體平台開發（HW Platform Dev）',
+        title: 'B1：硬體電路設計與 PCB Layout（含 Pre-assessment 後修正）',
+        period: '2026/11 – 2027/02 (2026 Q4–2027 Q1)',
+        duration: '約 3.5 個月',
+        owner: 'PUFsecurity / Hawkeye',
+        status: '硬體設計',
+        accent: '#c084fc',
+        badgeBg: 'rgba(168, 85, 247, 0.18)',
+        monthCols: [4, 5, 6, 7],
+        desc: '執行硬體線路圖（Schematic）設計與高密度 PCB Layout，並根據安規實驗室 Pre-assessment 預審回饋意見完成物理安全防護設計修正。',
+        deliverables: ['硬體線路設計圖 (Schematic)', 'PCB Layout 工程檔', 'Pre-assessment 硬體修正設計']
+      },
+      B2: {
+        track: 'B · 硬體平台開發（HW Platform Dev）',
+        title: 'B2：PCB 電路洗版與工程樣品打樣試產 (PCBA)',
+        period: '2027/03 (2027 Q1)',
+        duration: '約 1.5 個月',
+        owner: 'Hawkeye',
+        status: '製板打樣',
+        accent: '#c084fc',
+        badgeBg: 'rgba(168, 85, 247, 0.18)',
+        monthCols: [8],
+        desc: '進行 PCB 裸板製造（洗版）、關鍵零組件備料與 SMT 貼片打樣組裝，產出供研發與測試使用的工程樣板。',
+        deliverables: ['PCB 實體電路板', 'PCBA 工程驗證樣板 (EVT)', '硬體初步上電檢查 (Bring-up)']
+      },
+      B3: {
+        track: 'B · 硬體平台開發（HW Platform Dev）',
+        title: 'B3：底層驅動程式 (Driver) 與板級支援套件 (BSP) 開發',
+        period: '2027/04 – 2027/05 (2027 Q2)',
+        duration: '約 1.5 個月',
+        owner: 'Hawkeye',
+        status: '底層開發',
+        accent: '#c084fc',
+        badgeBg: 'rgba(168, 85, 247, 0.18)',
+        monthCols: [9, 10],
+        desc: '針對新洗版之硬體平台開發底層驅動程式（Driver）與 BSP（Board Support Package），確保硬體周邊與上層韌體通訊順暢。',
+        deliverables: ['硬體底層 Driver 套件', '客製化 BSP 開發包', '硬體介面驅動測試文件']
+      },
+      B4: {
+        track: 'B · 硬體平台開發（HW Platform Dev）',
+        title: 'B4：硬體平台整合測試與可靠度驗證',
+        period: '2027/06 (2027 Q2)',
+        duration: '約 1.5 個月',
+        owner: 'Hawkeye',
+        status: '硬體完測',
+        accent: '#c084fc',
+        badgeBg: 'rgba(168, 85, 247, 0.18)',
+        monthCols: [11],
+        desc: '執行硬體平台完整電氣特性量測、信號完整性、溫湿度環境壓力與長時間穩定度驗證，確保達標出機標準。',
+        deliverables: ['硬體功能與穩定度測試報告', '信號與電源完整性報告', '可出貨硬體樣機簽核']
+      },
+      C1: {
+        track: 'C · FIPS 140-3 L3 認證（Security Certification）',
+        title: 'C1：安規認證實驗室評估與專案簽約',
+        period: '2026/08 – 2026/09 (2026 Q3)',
+        duration: '約 2 個月',
+        owner: 'PUFsecurity / SecuX / DEKRA',
+        status: '合約啟動',
+        accent: '#34d399',
+        badgeBg: 'rgba(16, 185, 129, 0.18)',
+        monthCols: [1, 2],
+        desc: '與國際安規檢測實驗室（DEKRA）確認 FIPS 140-3 Level 3 認證範疇、商務報價與委任合約簽署，正式立案啟動。',
+        deliverables: ['DEKRA 安規認證委任合約', '專案認證範疇界定書', '各方權責分工表']
+      },
+      C2: {
+        track: 'C · FIPS 140-3 L3 認證（Security Certification）',
+        title: 'C2：認證專案 Kick-off 會議（時程規劃與 Pre-assessment 文件說明）',
+        period: '2026/10 (2026 Q4)',
+        duration: '1 個月',
+        owner: 'PUFsecurity / SecuX / DEKRA',
+        status: '專案啟動',
+        accent: '#34d399',
+        badgeBg: 'rgba(16, 185, 129, 0.18)',
+        monthCols: [3],
+        desc: '召開三方專案啟動會議，確認後續各階段認證里程碑與交付時程，並由實驗室詳述 Pre-assessment 預審文件撰寫規範。',
+        deliverables: ['Kick-off 會議紀錄與時程表', 'Pre-assessment 文件清單與範本', '加密模組邊界初步共識']
+      },
+      C3: {
+        track: 'C · FIPS 140-3 L3 認證（Security Certification）',
+        title: 'C3：FIPS 140-3 Pre-assessment 預審技術文件撰寫',
+        period: '2026/11 (2026 Q4)',
+        duration: '1 個月',
+        owner: 'PUFsecurity / DEKRA',
+        status: '文件整備',
+        accent: '#34d399',
+        badgeBg: 'rgba(16, 185, 129, 0.18)',
+        monthCols: [4],
+        desc: '依據 FIPS 140-3 Level 3 規範撰寫預審所需之安全設計、密碼模組邊界、物理安全防篡改機制與金鑰管理架構文件。',
+        deliverables: ['Pre-assessment 預審技術文件包', '物理安全與防篡改設計說明', '密碼邊界架構圖']
+      },
+      C4: {
+        track: 'C · FIPS 140-3 L3 認證（Security Certification）',
+        title: 'C4：安規實驗室 Pre-assessment Report（預審評估報告）產出',
+        period: '2026/12 (2026 Q4)',
+        duration: '1 個月',
+        owner: 'PUFsecurity / DEKRA',
+        status: '預審報告',
+        accent: '#34d399',
+        badgeBg: 'rgba(16, 185, 129, 0.18)',
+        monthCols: [5],
+        desc: '由 DEKRA 實驗室完成軟硬體架構合規預審，正式產出 Pre-assessment Report，供軟硬體團隊（B1/A2）進行設計收斂與修正。',
+        deliverables: ['DEKRA Pre-assessment 評估報告', '設計差異分析 (Gap Analysis)', '硬體與韌體合規修正建議']
+      },
+      C5: {
+        track: 'C · FIPS 140-3 L3 認證（Security Certification）',
+        title: 'C5：CAVP 密碼演算法模擬測試完成 & ESV 熵源驗證取證',
+        period: '2027/01 – 2027/04 (2027 Q1–Q2)',
+        duration: '約 3.5 個月',
+        owner: 'PUFsecurity / DEKRA',
+        status: '演算法與熵源驗證',
+        accent: '#34d399',
+        badgeBg: 'rgba(16, 185, 129, 0.18)',
+        monthCols: [6, 7, 8, 9],
+        desc: '完成 NIST CAVP（密碼演算法驗證計畫）測試向量模擬驗證，並同步完成 ESV（Entropy Source Validation）亂數熵源測試與取證。',
+        deliverables: ['CAVP 演算法模擬測試通過', 'ESV 熵源驗證報告與證書', '隨機數統計測試數據包']
+      },
+      C6: {
+        track: 'C · FIPS 140-3 L3 認證（Security Certification）',
+        title: 'C6：CMVP 密碼模組驗證計畫正式送審文件撰寫',
+        period: '2027/06 – 2027/09 (2027 Q2–Q3)',
+        duration: '約 4 個月',
+        owner: 'PUFsecurity / DEKRA',
+        status: 'CMVP 文件工程',
+        accent: '#34d399',
+        badgeBg: 'rgba(16, 185, 129, 0.18)',
+        monthCols: [11, 12, 13, 14],
+        desc: '撰寫全套 CMVP 正式認證文件，包含 Security Policy（安全政策）、有限狀態機模型（FSM）、硬體防篡改證明與原始碼對應文件。',
+        deliverables: ['FIPS 140-3 Security Policy', 'CMVP 全套技術審查文件', 'FSM 有限狀態機與自檢文件']
+      },
+      C7: {
+        track: 'C · FIPS 140-3 L3 認證（Security Certification）',
+        title: 'C7：CMVP 實驗室正式送測 & CAVP 實體平台正式取證',
+        period: '2027/10 – 2028/03 (2027 Q4–2028 Q1)',
+        duration: '約 6 個月',
+        owner: 'PUFsecurity / DEKRA',
+        status: '送測與正式取證',
+        accent: '#34d399',
+        badgeBg: 'rgba(16, 185, 129, 0.18)',
+        monthCols: [15, 16, 17, 18, 19, 20],
+        desc: '於最終硬體平台上取得 CAVP 正式演算法證書，並將樣機與完整文件送交 DEKRA 執行 CMVP Level 3 實驗室完整測試與提交審查。',
+        deliverables: ['CAVP 正式認證證書', 'DEKRA 實驗室全項測試通過', 'CMVP 官方提交審查包']
+      },
+      D1: {
+        track: 'D · 合作夥伴/場域驗證（Partner & Field Trial）',
+        title: 'D1：驗證樣機準備與寄送交付（預計 10～16 台）',
+        period: '2027/06 (2027 Q2)',
+        duration: '1 個月',
+        owner: 'STE / Webcomm / Jrsys / Changing / 中華電信',
+        status: '樣機交付',
+        accent: '#fbbf24',
+        badgeBg: 'rgba(245, 158, 11, 0.18)',
+        monthCols: [11],
+        desc: '完成 10～16 台通過測試之工程驗證樣機（含 SDK 與操作手冊）包裝整備，正式寄送交付予各大策略合作夥伴與電信場域。',
+        deliverables: ['10～16 台硬體樣機交付', '夥伴開發套件 (SDK) 與整合手冊', '樣機簽收與環境建置確認']
+      },
+      D2: {
+        track: 'D · 合作夥伴/場域驗證（Partner & Field Trial）',
+        title: 'D2：合作夥伴上層應用系統串接與實際場域整合驗證',
+        period: '2027/07 – 2027/09 (2027 Q3)',
+        duration: '約 3 個月',
+        owner: 'STE / Webcomm / Jrsys / Changing / 中華電信',
+        status: '場域實證 (PoC)',
+        accent: '#fbbf24',
+        badgeBg: 'rgba(245, 158, 11, 0.18)',
+        monthCols: [12, 13, 14],
+        desc: '協同各合作夥伴進行上層應用軟體串接、PKI/KMS 服務整合、跨系統互通性測試及真實商業場域壓力與穩定度驗證。',
+        deliverables: ['上層應用系統整合完成', '多夥伴場域互通測試報告', '商用部署上線就緒評估']
+      }
+    };
+
+    // 產生背景網格線與月份列
+    const gridLinesOverlay = document.getElementById('gridLinesOverlay');
+    const monthsAxis = document.getElementById('monthsAxis');
+
+    monthsData.forEach((m, index) => {
+      const line = document.createElement('div');
+      line.className = 'grid-col-line';
+      line.dataset.colIndex = index;
+      gridLinesOverlay.appendChild(line);
+
+      const cell = document.createElement('div');
+      cell.className = `month-cell year-${m.year}`;
+      cell.dataset.colIndex = index;
+      cell.textContent = m.label;
+      monthsAxis.appendChild(cell);
+    });
+
+    // 互動邏輯
+    const timelineWrapper = document.getElementById('timelineWrapper');
+    const stagePills = document.querySelectorAll('.stage-pill');
+    const stageListItems = document.querySelectorAll('.stage-list-item');
+    const detailPanel = document.getElementById('detailPanel');
+
+    const detailBadge = document.getElementById('detailBadge');
+    const detailPeriod = document.getElementById('detailPeriod');
+    const detailTitle = document.getElementById('detailTitle');
+    const detailDesc = document.getElementById('detailDesc');
+    const detailDeliverables = document.getElementById('detailDeliverables');
+    const detailOwner = document.getElementById('detailOwner');
+    const detailDuration = document.getElementById('detailDuration');
+    const detailStatus = document.getElementById('detailStatus');
+
+    const monthCells = document.querySelectorAll('.month-cell');
+
+    function showStageDetail(stageId) {
+      const info = stageDetails[stageId];
+      if (!info) return;
+
+      timelineWrapper.classList.add('has-hover');
+      stagePills.forEach(p => {
+        p.classList.toggle('active', p.dataset.stageId === stageId);
+      });
+      stageListItems.forEach(item => {
+        item.classList.toggle('active', item.dataset.stageLink === stageId);
+      });
+
+      // 高亮對應的月份欄位
+      monthCells.forEach(cell => {
+        const idx = Number(cell.dataset.colIndex);
+        cell.classList.toggle('highlight', info.monthCols.includes(idx));
+      });
+
+      // 更新面板主題色與文字
+      detailPanel.style.setProperty('--panel-accent', info.accent);
+      detailPanel.style.borderColor = info.accent;
+
+      detailBadge.textContent = info.track;
+      detailBadge.style.background = info.badgeBg;
+      detailBadge.style.color = info.accent;
+
+      detailPeriod.textContent = `時程區間：${info.period}`;
+      detailTitle.textContent = info.title;
+      detailDesc.textContent = info.desc;
+      detailOwner.textContent = info.owner;
+      detailDuration.textContent = info.duration;
+      detailStatus.textContent = info.status;
+      detailStatus.style.color = info.accent;
+
+      detailDeliverables.innerHTML = info.deliverables
+        .map(item => `<span class="deliverable-tag">${item}</span>`)
+        .join('');
+    }
+
+    // 預設初始化顯示 A1 的交付標籤
+    showStageDetail('A1');
+    timelineWrapper.classList.remove('has-hover');
+    stagePills.forEach(p => p.classList.remove('active'));
+
+    stagePills.forEach(pill => {
+      const stageId = pill.dataset.stageId;
+      pill.addEventListener('mouseenter', () => showStageDetail(stageId));
+      pill.addEventListener('click', () => showStageDetail(stageId));
+    });
+
+    stageListItems.forEach(item => {
+      const stageId = item.dataset.stageLink;
+      item.addEventListener('mouseenter', () => showStageDetail(stageId));
+      item.addEventListener('click', () => showStageDetail(stageId));
+    });
+
+    timelineWrapper.addEventListener('mouseleave', () => {
+      timelineWrapper.classList.remove('has-hover');
+      stagePills.forEach(p => p.classList.remove('active'));
+      monthCells.forEach(c => c.classList.remove('highlight'));
+    });
+  </script>
+</body>
+</html>
